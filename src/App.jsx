@@ -1,3 +1,5 @@
+import SpoonacularApi from "./components/SpoonacularApi"
+
 function App() {
 
   return (
@@ -6,6 +8,7 @@ function App() {
       <iframe 
         src="https://giphy.com/embed/m7y2uwgclFzc4" width="480" height="359" className="giphy-embed" allowFullScreen>
       </iframe>
+      <SpoonacularApi />
     </>
   )
 }
