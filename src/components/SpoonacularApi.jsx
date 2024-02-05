@@ -36,7 +36,7 @@ const SpoonacularApi = () => {
 return (
     <div>
             {recipes.map((recipe) => (
-                <RecipeCard key = {recipe.id} recipe = {recipe.title} />
+                <RecipeCard key = {recipe.id} recipeTitle = {recipe.title} ingredients = {recipe.extendedIngredients}/>
             ))}
             
 
