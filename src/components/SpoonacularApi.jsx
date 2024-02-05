@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
+import RecipeCard from './RecipeCard';
 
 const SpoonacularApi = () => {
     const [recipes, setRecipes] = useState([]);
@@ -14,27 +15,31 @@ const SpoonacularApi = () => {
                 apiKey: apiKey,
                 query: 'pasta',
                 number: 1,
+                instructionsRequired: true,
+                addRecipeInformation: true,
+                fillIngredients: true,
+
             },
+           
         });
+        console.log(response);
     setRecipes(response.data.results);
       } catch (error) {
         console.error ('Error is', error)
       }
     };
-
+    
  useEffect(() => {
     fetchRecipes();
  }, []);
 
 return (
     <div>
-        <h1>Recipes</h1>
-        <ul>
             {recipes.map((recipe) => (
-                <li key = {recipe.id}>{recipe.title}</li>
+                <RecipeCard key = {recipe.id} recipe = {recipe.title} />
             ))}
             
-        </ul>
+
     </div>
  );
 };

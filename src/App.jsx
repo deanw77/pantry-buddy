@@ -1,3 +1,4 @@
+import RecipeCard from "./components/RecipeCard"
 import SpoonacularApi from "./components/SpoonacularApi"
 
 function App() {
