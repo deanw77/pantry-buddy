@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { auth } from "../../firebase/firebase";
 import { onAuthStateChanged } from "firebase/auth";
 
-import Profile from "../Profile";
+import UserData from "../UserData";
 import Dashboard from "./Dashboard";
 
 function AuthDetails() {
@@ -24,7 +24,7 @@ function AuthDetails() {
 
   return (
         <>
-            {authUser ? <Profile /> : <Dashboard />}
+            {authUser ? <UserData /> : <Dashboard />}
         </>
     );
 }
