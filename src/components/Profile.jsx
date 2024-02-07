@@ -5,11 +5,13 @@ import { imgDB, txtDB } from "../firebase/firebase";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { setDoc, doc, getDoc } from "firebase/firestore";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Profile() {
 
   const user = auth.currentUser;
-
+  const navigate = useNavigate();
+  
   const [txt, setTxt] = useState('');
   const [img, setImg] = useState('');
 
@@ -43,6 +45,7 @@ export default function Profile() {
     signOut(auth)
       .then(() => {
         console.log("User signed out");
+        navigate("/login");
       })
       .catch((error) => console.log(error));
   };
