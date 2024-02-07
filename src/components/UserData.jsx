@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 
 import GroceryList from "./widgets/GroceryList";
+import PantryEntryForm from "./PantryEntryForm";
 
 export default function UserData() {
 
@@ -14,6 +15,7 @@ export default function UserData() {
 
         <GroceryList />
         <Link to="/profile"><button>Profile Page</button></Link>
+        <PantryEntryForm />
       </div>
     </div>
   );
