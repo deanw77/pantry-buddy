@@ -1,7 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState, useRef } from "react";
-import { auth, createUserDocument } from "../../firebase/firebase";
+import { auth } from "../../firebase/firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
+import swal from 'sweetalert';
 
 import "./css/dashboard.css";
 
@@ -25,11 +26,36 @@ export default function SignUp() {
       .then(() => {
         setError("");
         setLoading(true);
-        createUserDocument(auth.currentUser.email);
+        swal({
+          title: "Welcome",
+          text: `Succesfully signed up`,
+          icon: "success",
+        });
         navigate("/");
       })
       .catch((error) => {
-        setError(error);
+        swal({
+          title: "Something has Gone Wrong.",
+          text: `${error}`,
+          icon: "warning",
+          dangerMode: true,
+          buttons: {
+            cancel: "Retry with different email",
+            login: {
+              text: "Login",
+              value: "Login",
+            }
+          }
+        })
+        .then(value => {
+          switch (value) {
+            case "Login":
+              navigate("/login");
+              break;
+            default:
+              swal("Let's try again");
+          }
+        });
       });
     setLoading(false);
   };

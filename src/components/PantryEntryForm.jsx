@@ -1,11 +1,15 @@
 import React, {useState} from "react";
 
-funtion PantryEntryForm() {
+function PantryEntryForm() {
   const [foodEntry, setFoodEntry] = useState('');
   const [expiryDate, setExpiryDate] = useState('');
+
+
   const handleSubmit = async (e) => {
     //logic to add to firebase
         e.preventDefault();
+        setFoodEntry('');
+        setExpiryDate('');
     }
   return (
     <form onSubmit={handleSubmit}>
@@ -28,7 +32,7 @@ funtion PantryEntryForm() {
         <button type="submit">Add Food</button>
     </form>
 
-  ):
+  );
 }
 
 export default PantryEntryForm

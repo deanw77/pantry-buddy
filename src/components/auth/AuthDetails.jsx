@@ -5,6 +5,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import UserData from "../UserData";
 import Dashboard from "./Dashboard";
 
+
 function AuthDetails() {
   const [authUser, setAuthUser] = useState(null);
 
@@ -27,6 +28,7 @@ function AuthDetails() {
             {authUser ? <UserData /> : <Dashboard />}
         </>
     );
+  
 }
 
 export default AuthDetails;
