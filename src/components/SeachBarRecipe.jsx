@@ -23,7 +23,7 @@ return (
             value = {recipeQuery}
             onChange = {handleInputChange}
         />
-        <button type = 'submit'> Search </button>
+        <button type = 'submit'> Search for Recipe</button>
     </form>
   );
 }
