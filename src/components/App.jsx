@@ -9,17 +9,19 @@ import Profile from "./Profile";
 import UserData from "./UserData";
 import AuthDetails from "./auth/AuthDetails";
 import ForgotPassword from "./auth/ForgotPassword";
+import SideNav from "./nav/SideNav";
 
 function App() {
   return (
     <Routes>
       <Route path="/" element={<AuthDetails />} />
-      <Route path="/dashbord" element={<Dashboard />} />
+      <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/signup" element={<Signup />} />
       <Route path="/login" element={<Login />} />
       <Route path="/profile" element={<Profile />} />
       <Route path="/userdata" element={<UserData />} />
-      <Route path="forgot-password" element={<ForgotPassword />} />
+      <Route path="/forgot-password" element={<ForgotPassword />} />
+      <Route path="/sidenav" element ={<SideNav/>}/>
     </Routes>
   );
 }
