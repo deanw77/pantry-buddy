@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState, useRef } from "react";
-import { auth, createUserDocument } from "../../firebase/firebase";
+import { auth } from "../../firebase/firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 
 import "./css/dashboard.css";
@@ -25,7 +25,6 @@ export default function SignUp() {
       .then(() => {
         setError("");
         setLoading(true);
-        createUserDocument(auth.currentUser.email);
         navigate("/");
       })
       .catch((error) => {

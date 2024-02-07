@@ -1,6 +1,10 @@
+import firebase from "firebase/compat/app";
+// Required for side-effects
+import "firebase/firestore";
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth"
-import "firebase/firestore"
+import { getStorage } from "firebase/storage";
+import { getFirestore } from "firebase/firestore"
 
 const firebaseConfig = {
   apiKey: "AIzaSyDY0cMeoOdOS7w3bFV7fdiR3bglHZjYUE4",
@@ -15,27 +19,8 @@ const app = initializeApp(firebaseConfig);
 
 export const auth = getAuth(app);
 export default app;
-export const firestore = app.firestore;
 
-export const createUserDocument = async (user) => {
-  if (!user) {
-    return;
-  }
+const imgDB = getStorage(app)
+const txtDB = getFirestore(app)
 
-  const userRef = firestore.doc(`users/${user.uid}`);
-
-  const snapshot = await userRef.get();
-
-  if (!snapshot.exists) {
-    const {email} = user;
-
-    try {
-      userRef.set({
-        email,
-        createdAt: new Date()
-      })
-    } catch(error) {
-      console.log(error);
-    }
-  }
-}
+export { imgDB, txtDB};
