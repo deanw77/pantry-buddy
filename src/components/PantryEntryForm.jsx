@@ -28,7 +28,7 @@ function PantryEntryForm() {
         <button type="submit">Add Food</button>
     </form>
 
-  ):
+  );
 }
 
 export default PantryEntryForm
