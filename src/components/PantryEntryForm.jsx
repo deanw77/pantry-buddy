@@ -3,9 +3,13 @@ import React, {useState} from "react";
 function PantryEntryForm() {
   const [foodEntry, setFoodEntry] = useState('');
   const [expiryDate, setExpiryDate] = useState('');
+
+
   const handleSubmit = async (e) => {
     //logic to add to firebase
         e.preventDefault();
+        setFoodEntry('');
+        setExpiryDate('');
     }
   return (
     <form onSubmit={handleSubmit}>
