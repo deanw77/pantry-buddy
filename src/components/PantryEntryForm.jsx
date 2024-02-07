@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-funtion PantryEntryForm() {
+function PantryEntryForm() {
   const [foodEntry, setFoodEntry] = useState('');
   const [expiryDate, setExpiryDate] = useState('');
   const handleSubmit = async (e) => {
