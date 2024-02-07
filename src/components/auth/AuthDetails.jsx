@@ -4,7 +4,7 @@ import { onAuthStateChanged } from "firebase/auth";
 
 import UserData from "../UserData";
 import Dashboard from "./Dashboard";
-import { Link } from "react-router-dom";
+
 
 function AuthDetails() {
   const [authUser, setAuthUser] = useState(null);
@@ -26,7 +26,6 @@ function AuthDetails() {
   return (
         <>
             {authUser ? <UserData /> : <Dashboard />}
-            <Link to="/userdata"><button>Logged In Page</button></Link>
         </>
     );
   
