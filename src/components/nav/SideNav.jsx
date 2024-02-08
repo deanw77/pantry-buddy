@@ -16,7 +16,7 @@ export default function SideNav({children}) {
     //may remove logo + user details to add to a top navbar if we decide to create one
     //show different icons depending on whether the state is expanded or minified
     return (
-        <aside className="h-screen">
+        <aside className="h-100">
             <nav className = "h-full inline-flex flex-col bg-white border-r shadow-sm">
                 <div className = "p-4 pb-2 flex justify-between items-center">
                     <img src="./src/assets/images/logo_transparent.png" className={`overflow-hidden transition-all ${
@@ -70,7 +70,7 @@ export function SidebarItem({icon, text, active, alert}){
             )}
 
             {!expanded && <div className={`
-            absolute left-full rounded-md px-2 py-1 ml-6 bg-indigo-100 text-indigo-800 text-sm invisible opacity-20 translate-x-3 transition-all group-hover:visible group-hover:opacity-100 group-hover:translate-x-0
+            absolute left-full rounded-md px-2 py-1 ml-6 bg-amber-100 text-green-950 text-sm invisible opacity-20 translate-x-3 transition-all group-hover:visible group-hover:opacity-100 group-hover:translate-x-0
             `}>{text}</div>}
         </li>
     )
