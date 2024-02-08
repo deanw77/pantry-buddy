@@ -1,4 +1,3 @@
-import firebase from "firebase/compat/app";
 // Required for side-effects
 import "firebase/firestore";
 import { initializeApp } from "firebase/app";
@@ -20,7 +19,5 @@ const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export default app;
 
-const imgDB = getStorage(app)
-const txtDB = getFirestore(app)
-
-export { imgDB, txtDB};
+export const imgDB = getStorage(app)
+export const db = getFirestore(app)
