@@ -21,6 +21,7 @@ export default function UserData() {
 
   return (
     <>
+    <div className="flex">
       <SideNav>
         <SidebarItem
         icon={<LayoutGrid size={20} />}  text="Dashboard" active />
@@ -28,7 +29,7 @@ export default function UserData() {
         <SidebarItem icon={<CookingPot size={20}/>}  text="Recipes" alert/>
         <SidebarItem icon={<ClipboardList size={20}/>}  text="Grocery List"/>
         <SidebarItem icon={<Leaf size={20}/>}  text="Carbon Footprint"/>
-        <SidebarItem icon={<CircleUserRound size={20}/>}  text="Account"/>
+        <SidebarItem icon={<CircleUserRound size={20}/>}  text="Account Settings"/>
       </SideNav>
 
     <div id="container">
@@ -42,6 +43,7 @@ export default function UserData() {
         <PantryEntryForm />
         <SearchBarRecipeParent />
       </div>
+    </div>
     </div>
     </>
   );
