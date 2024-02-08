@@ -24,13 +24,13 @@ export default function UserData() {
     <>
     <div className="flex">
       <SideNav>
-        <SidebarItem
-        icon={<LayoutGrid size={20} />}  text="Dashboard" active />
+      <Link to="/userdata"><SidebarItem
+        icon={<LayoutGrid size={20} />}  text="Dashboard" active /></Link>
         <SidebarItem icon = {<Sandwich size={20}/>}  text="My Pantry"/>
         <SidebarItem icon={<CookingPot size={20}/>}  text="Recipes" alert/>
         <SidebarItem icon={<ClipboardList size={20}/>}  text="Grocery List"/>
         <SidebarItem icon={<Leaf size={20}/>}  text="Carbon Footprint"/>
-        <SidebarItem icon={<CircleUserRound size={20}/>}  text="Account Settings"/>
+        <Link to="/profile"><SidebarItem icon={<CircleUserRound size={20}/>}  text="Account Settings"/></Link>
       </SideNav>
 
 <div className="pageContent flex flex-col w-full">
