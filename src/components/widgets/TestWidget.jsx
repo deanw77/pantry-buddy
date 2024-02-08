@@ -1,6 +1,6 @@
 import GroceryList from "./GroceryList";
-import PantryEntryForm from "../PantryEntryForm";
-import SearchBarRecipeParent from "../SearchBarRecipeParent";
+import PantryEntryForm from "./PantryEntryForm";
+import SearchBarRecipeParent from "./SearchBarRecipeParent";
 
 function TestWidget() {
     return ( 
