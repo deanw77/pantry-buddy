@@ -43,6 +43,11 @@ export default function UserData() {
         <SearchBarRecipeParent />
       </div>
     </div>
+    <div>
+    <PantryEntryForm />
+    <SearchBarRecipeParent />
+    </div>
+    
     </>
   );
 }
