@@ -33,7 +33,7 @@ export default function UserData() {
         <SidebarItem icon={<CircleUserRound size={20}/>}  text="Account Settings"/>
       </SideNav>
 
-<div className="pageContent flex flex-col">
+<div className="pageContent flex flex-col w-full">
     <div id="container">
       <div id="overlay">
         <h1 className="mt-10 text-center text-4xl font-bold leading-9 tracking-tight text-lime-600">

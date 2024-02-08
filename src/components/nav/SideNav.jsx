@@ -16,7 +16,7 @@ export default function SideNav({children}) {
     //may remove logo + user details to add to a top navbar if we decide to create one
     //show different icons depending on whether the state is expanded or minified
     return (
-        <aside className="h-screen">
+        <aside className="h-100">
             <nav className = "h-full inline-flex flex-col bg-white border-r shadow-sm">
                 <div className = "p-4 pb-2 flex justify-between items-center">
                     <img src="./src/assets/images/logo_transparent.png" className={`overflow-hidden transition-all ${
