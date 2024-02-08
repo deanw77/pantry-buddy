@@ -1,10 +1,12 @@
-import { Link } from "react-router-dom";
 import { useState } from "react";
 
-import TestWidget from "./widgets/TestWidget";
-import Profile from "./Profile";
-
+// Imports Displayed on All Pages
 import SideNav, { SidebarItem } from "./nav/SideNav";
+import Footer from "./nav/Footer";
+
+// Components Selected Via Nav
+import TestWidget from "./widgets/TestWidget";
+import Profile from "./widgets/Profile";
 
 //import the needed icons from lucide react
 import {
@@ -15,7 +17,8 @@ import {
   CircleUserRound,
   Leaf,
 } from "lucide-react";
-import Footer from "./nav/Footer";
+
+import "./css/widget.css";
 
 export default function UserData() {
   const [active, setActive] = useState("TestWidget");
@@ -24,23 +27,50 @@ export default function UserData() {
     <>
       <div className="flex w-full pageContent">
         <SideNav>
-          <button className="text-left" onClick={() => setActive("TestWidget")}>
+          <a
+            className="text-left flex-1"
+            onClick={() => setActive("TestWidget")}
+          >
             <SidebarItem
               icon={<LayoutGrid size={20} />}
               text="Dashboard"
               active
             />
-          </button>
-          <SidebarItem icon={<Sandwich size={20} />} text="My Pantry" />
-          <SidebarItem icon={<CookingPot size={20} />} text="Recipes" alert />
-          <SidebarItem icon={<ClipboardList size={20} />} text="Grocery List" />
-          <SidebarItem icon={<Leaf size={20} />} text="Carbon Footprint" />
-          <button className="text-left" onClick={() => setActive("Profile")}>
-          <SidebarItem
-            icon={<CircleUserRound size={20} />}
-            text="Account Settings"
-          />
-          </button>
+          </a>
+          <a className="text-left" onClick={() => setActive("TestWidget")}>
+            <SidebarItem icon={<Sandwich size={20} />} text="My Pantry" />
+          </a>
+          <a
+            className="text-left"
+            onClick={() => setActive("TestWidget")}
+          ></a>
+          <a
+            className="text-left flex-1"
+            onClick={() => setActive("TestWidget")}
+          >
+            <SidebarItem icon={<CookingPot size={20} />} text="Recipes" alert />
+          </a>
+          <a
+            className="text-left flex-1"
+            onClick={() => setActive("TestWidget")}
+          >
+            <SidebarItem
+              icon={<ClipboardList size={20} />}
+              text="Grocery List"
+            />
+          </a>
+          <a
+            className="text-left flex-1"
+            onClick={() => setActive("TestWidget")}
+          >
+            <SidebarItem icon={<Leaf size={20} />} text="Carbon Footprint" />
+          </a>
+          <a className="text-left" onClick={() => setActive("Profile")}>
+            <SidebarItem
+              icon={<CircleUserRound size={20} />}
+              text="Account Settings"
+            />
+          </a>
         </SideNav>
 
         <div className="w-full pageContent">
