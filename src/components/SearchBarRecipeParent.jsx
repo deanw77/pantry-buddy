@@ -17,6 +17,6 @@ return (
         <SpoonacularApi query = {query} />
     </div>
   );
-}
+};
 
 export default SearchBarRecipeParent;
