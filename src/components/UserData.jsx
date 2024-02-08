@@ -15,6 +15,7 @@ import {
   CircleUserRound,
   Leaf,
 } from "lucide-react"
+import Footer from "./nav/Footer";
 
 export default function UserData() {
 
@@ -32,6 +33,7 @@ export default function UserData() {
         <SidebarItem icon={<CircleUserRound size={20}/>}  text="Account Settings"/>
       </SideNav>
 
+<div className="pageContent flex flex-col">
     <div id="container">
       <div id="overlay">
         <h1 className="mt-10 text-center text-4xl font-bold leading-9 tracking-tight text-lime-600">
@@ -44,6 +46,9 @@ export default function UserData() {
         <SearchBarRecipeParent />
       </div>
     </div>
+
+<Footer/>
+</div>
     </div>
     </>
   );
