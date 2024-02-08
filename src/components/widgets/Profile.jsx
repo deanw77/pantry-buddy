@@ -1,16 +1,15 @@
 import { useState, useEffect } from "react";
 import { signOut } from "firebase/auth";
-import { auth, imgDB, db } from "../firebase/firebase";
+import { auth, imgDB, db } from "../../firebase/firebase";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
-import { getFirestore, collection, query, where, getDocs, doc, setDoc } from "firebase/firestore";
+import { collection, query, where, getDocs, doc, setDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 
-import "./css/widget.css";
+import "../css/widget.css";
 
 export default function Profile() {
   const user = auth.currentUser;
   const navigate = useNavigate();
-  const uid = auth.currentUser;
   const [txt, setTxt] = useState("");
   const [img, setImg] = useState("");
   const [userData, setUserData] = useState([]);
