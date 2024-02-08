@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { auth } from "../../firebase/firebase";
 import { onAuthStateChanged } from "firebase/auth";
 
-import UserData from "../UserData";
-import Dashboard from "./Dashboard";
+import Dashboard from "../Dashboard";
+import Welcome from "./Welcome";
 
 
 function AuthDetails() {
@@ -25,7 +25,7 @@ function AuthDetails() {
 
   return (
         <>
-            {authUser ? <UserData /> : <Dashboard />}
+            {authUser ? <Dashboard /> : <Welcome />}
         </>
     );
   
