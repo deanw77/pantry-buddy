@@ -7,6 +7,8 @@ import { setDoc, doc, getDoc } from "firebase/firestore";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
+
+
 export default function Profile() {
 
   const user = auth.currentUser;
