@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
 
 import GroceryList from "./widgets/GroceryList";
-import PantryEntryForm from "../components/widgets/PantryEntryForm"
-import SearchBarRecipeParent from "../components/widgets/SearchBarRecipeParent"
+import PantryEntryForm from "./widgets/PantryEntryForm"
+import SearchBarRecipeParent from "./widgets/SearchBarRecipeParent";
+
 import SideNav, { SidebarItem } from "./nav/SideNav";
 
 //import the needed icons from lucide react
@@ -43,8 +44,7 @@ export default function UserData() {
       </div>
     </div>
     <div>
-    <PantryEntryForm />
-    <SearchBarRecipeParent />
+  
     </div>
     
     </>
