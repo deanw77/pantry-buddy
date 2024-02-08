@@ -13,6 +13,8 @@ import {
 import { useNavigate } from "react-router-dom";
 
 import "../css/widget.css";
+import PantryEntryForm from "./PantryEntryForm"
+import SearchBarRecipeParent from "./SearchBarRecipeParent";
 
 export default function Profile() {
   const user = auth.currentUser;
@@ -107,6 +109,7 @@ export default function Profile() {
       >
         Sign Out
       </button>
+      <SearchBarRecipeParent />
     </div>
   );
 }
