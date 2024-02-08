@@ -57,8 +57,6 @@ export default function Profile() {
     fetchSingle();
   }, []);
 
-  console.log(userData);
-
   const profileImage = userData.ProfileImage;
   const username = userData.Username;
   const useremail = user.email;
