@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 
 import GroceryList from "./widgets/GroceryList";
-import PantryEntryForm from "./PantryEntryForm";
-import SearchBarRecipeParent from "./SearchBarRecipeParent";
+import PantryEntryForm from "./widgets/PantryEntryForm"
+import SearchBarRecipeParent from "./widgets/SearchBarRecipeParent";
 
 import SideNav, { SidebarItem } from "./nav/SideNav";
 
@@ -44,8 +44,7 @@ export default function UserData() {
       </div>
     </div>
     <div>
-    <PantryEntryForm />
-    <SearchBarRecipeParent />
+  
     </div>
     
     </>
