@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import SearchBarRecipe from './SearchBarRecipe';
-import SpoonacularApi from './SpoonacularApi';
+import SpoonacularApi from '../SpoonacularApi';
 
 
 function SearchBarRecipeParent () {
@@ -17,6 +17,6 @@ return (
         <SpoonacularApi query = {query} />
     </div>
   );
-}
+};
 
 export default SearchBarRecipeParent;
