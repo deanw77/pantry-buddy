@@ -10,9 +10,9 @@
 }
 
 #overlay {
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(255, 251, 235, 0.6);
     width: 90%;
     max-width: 600px;
     border-radius: 20px;
-    box-shadow: 2px 2px 5px 1px black;
+    box-shadow: 2px 2px 5px 1px rgba(121, 119, 111, 0.5);
 }

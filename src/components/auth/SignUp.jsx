@@ -4,6 +4,7 @@ import { auth } from "../../firebase/firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import swal from 'sweetalert';
 
+import logo from "../../assets/images/logo_transparent.png";
 import "./css/dashboard.css";
 
 export default function SignUp() {
@@ -65,7 +66,8 @@ export default function SignUp() {
       <div id="overlay">
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-          <h2 className="mt-10 text-center text-4xl font-bold leading-9 tracking-tight text-lime-500">
+          <img src={logo} />
+          <h2 className="text-center text-4xl font-bold leading-9 tracking-tight text-green-600">
             Sign Up for an account
           </h2>
         </div>
@@ -75,7 +77,7 @@ export default function SignUp() {
             <div>
               <label
                 htmlFor="email"
-                className="block text-sm font-medium leading-6 text-lime-500"
+                className="block text-sm font-medium leading-6 text-green-900"
               >
                 Email address
               </label>
@@ -88,7 +90,7 @@ export default function SignUp() {
                   type="email"
                   autoComplete="email"
                   required
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm sm:leading-6"
                 />
               </div>
             </div>
@@ -97,7 +99,7 @@ export default function SignUp() {
               <div className="flex items-center justify-between">
                 <label
                   htmlFor="password"
-                  className="block text-sm font-medium leading-6 text-lime-500"
+                  className="block text-sm font-medium leading-6 text-green-900"
                 >
                   Password
                 </label>
@@ -112,7 +114,7 @@ export default function SignUp() {
                   type="password"
                   autoComplete="current-password"
                   required
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm sm:leading-6"
                 />
               </div>
             </div>
@@ -121,7 +123,7 @@ export default function SignUp() {
               <div className="flex items-center justify-between">
                 <label
                   htmlFor="passwordConfirmation"
-                  className="block text-sm font-medium leading-6 text-lime-500"
+                  className="block text-sm font-medium leading-6 text-green-900"
                 >
                   Confirm Password
                 </label>
@@ -132,7 +134,7 @@ export default function SignUp() {
                   id="passwordConfirmation"
                   name="passwordConfirmation"
                   type="password"
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm sm:leading-6"
                 />
               </div>
             </div>
@@ -145,12 +147,12 @@ export default function SignUp() {
               <button
                 disabled={loading}
                 type="submit"
-                className="flex w-full justify-center rounded-md bg-lime-500 px-3 py-1.5 text-sm font-semibold leading-6 text-black shadow-sm hover:bg-lime-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                className="flex w-full justify-center rounded-md bg-green-600 px-3 py-1.5 text-sm font-semibold leading-6 text-black shadow-sm hover:bg-amber-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600"
               >
                 Sign Up
               </button>
             </div>
-            <p className="text-center text-lime-500">
+            <p className="text-center text-green-600 font-bold">
               Already have an account? <Link to="/login">Log In</Link>{" "}
             </p>
           </form>
