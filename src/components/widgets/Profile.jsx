@@ -13,7 +13,7 @@ import {
 import { useNavigate } from "react-router-dom";
 
 import "../css/widget.css";
-import PantryEntryForm from "./PantryEntryForm"
+// import PantryEntryForm from "./PantryEntryForm"
 import SearchBarRecipeParent from "./SearchBarRecipeParent";
 
 export default function Profile() {
