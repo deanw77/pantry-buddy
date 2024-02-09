@@ -13,8 +13,6 @@ import {
 import { useNavigate } from "react-router-dom";
 
 import "../css/widget.css";
-import PantryEntryForm from "./PantryEntryForm"
-import SearchBarRecipeParent from "./SearchBarRecipeParent";
 
 export default function Profile() {
   const user = auth.currentUser.uid;
@@ -80,12 +78,6 @@ export default function Profile() {
       .catch((error) => console.log(error));
   };
 
-  const userDelete = () => {
-    delete(auth).then(() => {
-      console.log("User deleted");
-    })
-  }
-
   return (
     <div id="widgetContainer" className="bg-amber-50">
       <h1 className="text-center text-2xl font-bold leading-9 tracking-tight text-amber-500">
@@ -144,7 +136,6 @@ export default function Profile() {
       >
         Sign Out
       </button>
-      <SearchBarRecipeParent />
     </div>
   );
 }

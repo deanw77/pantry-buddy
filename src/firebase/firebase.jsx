@@ -6,12 +6,12 @@ import { getStorage } from "firebase/storage";
 import { getFirestore } from "firebase/firestore"
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDY0cMeoOdOS7w3bFV7fdiR3bglHZjYUE4",
-  authDomain: "react-login-development-6450e.firebaseapp.com",
-  projectId: "react-login-development-6450e",
-  storageBucket: "react-login-development-6450e.appspot.com",
-  messagingSenderId: "42548849303",
-  appId: "1:42548849303:web:8153325b2ce01d2de197d2"
+  apiKey: "AIzaSyBK38c-YRvNwp1rEQ0Vz9Ftlg2SzMiljCo",
+  authDomain: "pantry-buddy-fcc2d.firebaseapp.com",
+  projectId: "pantry-buddy-fcc2d",
+  storageBucket: "pantry-buddy-fcc2d.appspot.com",
+  messagingSenderId: "87248658599",
+  appId: "1:87248658599:web:0dc1cdae25de359aaffb82"
 };
 
 const app = initializeApp(firebaseConfig);

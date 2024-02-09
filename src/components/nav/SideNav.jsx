@@ -5,8 +5,6 @@ import { ChevronLast, ChevronFirst } from "lucide-react";
 //import createContext, useContext, useState
 import { createContext, useContext, useState } from "react";
 
-
-
 //make sidebar items close and expand based on the context of the sidebar - wrap children elements in this
 const SidebarContext = createContext();
 
