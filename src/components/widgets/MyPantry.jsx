@@ -4,6 +4,7 @@ import "../css/widget.css";
 
 //Widgets for this page specifically
 import GetRecipeCTA from "./GetRecipeCTA";
+import PantryEntryForm from "./PantryEntryForm";
 
 export default function MyPantry() {
   return (
@@ -11,6 +12,7 @@ export default function MyPantry() {
       <div id="widgetContainer" className="flex">
         <div className="flex flex-col">
           <GetRecipeCTA />
+          <PantryEntryForm />
         </div>
       </div>
     </>

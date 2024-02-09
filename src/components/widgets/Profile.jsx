@@ -24,14 +24,14 @@ export default function Profile() {
   const handleupload = (e) => {
     const imgs = ref(imgDB, `Imgs/${auth.currentUser.uid}`);
     uploadBytes(imgs, e.target.files[0]).then((data) => {
-      console.log(data, "imgs");
       getDownloadURL(data.ref).then((val) => {
         setImg(val);
       });
     });
   };
 
-  async function fetchSingle() {
+  
+  const fetchDataOnce = async () =>{
     const q = query(collection(db, "userData"), where("name", "==", `${user}`));
     const querySnapshot = await getDocs(q);
 
@@ -48,7 +48,7 @@ export default function Profile() {
       { name: `${auth.currentUser.uid}`, ProfileImage: img },
       { merge: true }
     );
-    fetchSingle();
+    fetchDataOnce()
   };
 
   const handleUsernameClick = async () => {
@@ -58,11 +58,11 @@ export default function Profile() {
       { name: `${auth.currentUser.uid}`, Username: txt },
       { merge: true }
     );
-    fetchSingle();
+    fetchDataOnce()
   };
 
   useEffect(() => {
-    fetchSingle();
+    fetchDataOnce()
   }, []);
 
   const profileImage = userData.ProfileImage;

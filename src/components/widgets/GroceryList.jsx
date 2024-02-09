@@ -1,17 +1,26 @@
 import { useState, useEffect } from "react";
 import { auth, db } from "../../firebase/firebase";
-import { collection, query, where, getDocs, doc, setDoc } from "firebase/firestore";
+import {
+  collection,
+  query,
+  where,
+  getDocs,
+  setDoc,
+  doc,
+} from "firebase/firestore";
 
 import "../auth/css/dashboard.css";
 
 function GroceryList() {
+  const user = auth.currentUser.uid;
   const [userGroceryList, setUserGroceryList] = useState([]);
 
-  async function fetchSingle() {
+  const fetchDataOnce = async () => {
     const q = query(
       collection(db, "groceryList"),
-      where("name", "==", `${auth.currentUser.uid}`)
-    );
+      where("name", "==", `${user}`)
+      );
+    
     const querySnapshot = await getDocs(q);
 
     querySnapshot.forEach((doc) => {
@@ -20,22 +29,23 @@ function GroceryList() {
     });
   }
 
-  useEffect(() => { 
-    fetchSingle();
+  useEffect(() => {
+    fetchDataOnce()
   }, []);
 
-  const addGroceryItem = async () => {
-    const addShopping = doc(db, "groceryList", `${auth.currentUser.uid}`);
-    await setDoc(
-      addShopping,
-      { 1: 'milk', 2: 'bread', 3: 'chicken', 4: 'Tofu', 5: 'Beer', 6: 'Vodka' },
-      { merge: true}
-    )
-    fetchSingle();
-  }
+  // const addGroceryItem = async () => {
+  //   const addShopping = doc(db, "groceryList", `${auth.currentUser.uid}`);
+  //   await setDoc(
+  //     addShopping,
+  //     { },
+  //     { merge: true }
+  //   );
+  //   fetchDataOnce()
+  // };
 
-  addGroceryItem();
-  console.log(userGroceryList)
+  // useEffect(() => {
+  //   addGroceryItem()
+  // }, []);
 
   return (
     <div id="widgetContainer">
