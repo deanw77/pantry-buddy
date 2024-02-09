@@ -47,3 +47,14 @@ hr {
    align-items: center;
    flex-wrap: wrap;
 }
+
+/* Pantry List */
+
+#PantryList {
+  min-width: 200px;
+  min-height: 200px;
+  border-radius: 5px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 10px 1px black;
+}
