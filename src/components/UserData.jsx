@@ -25,7 +25,7 @@ export default function UserData() {
         <SidebarItem
         icon={<LayoutGrid size={20} />}  text="Dashboard" active />
         <SidebarItem icon = {<Sandwich size={20}/>}  text="My Pantry"/>
-        <SidebarItem icon={<CookingPot size={20}/>}  text="Recipes" alert/>
+        <SidebarItem icon={<CookingPot size={20}/>}  text="Recipes"/>
         <SidebarItem icon={<ClipboardList size={20}/>}  text="Grocery List"/>
         <SidebarItem icon={<Leaf size={20}/>}  text="Carbon Footprint"/>
         <SidebarItem icon={<CircleUserRound size={20}/>}  text="Account"/>

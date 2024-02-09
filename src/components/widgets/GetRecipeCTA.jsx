@@ -8,8 +8,8 @@ export default function GetRecipeCTA() {
     <p className="text-gray-700 text-base">
       Get recipe ideas based on the items due to expire soon in your pantry!
     </p>
-    <Link to="/dashboard"> <button className="bg-amber-500 hover:bg-green-600 text-green-950 font-bold py-2 px-4 rounded">
-  GO TO RECIPES PAGE
+    <Link to="/dashboard"> <button className="flex w-full justify-center rounded-md bg-green-600 px-3 py-1.5 my-3 text-sm font-semibold leading-6 text-black shadow-sm hover:bg-amber-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600">
+  Go to Recipes Page
 </button></Link>
   </div>
   </div>
