@@ -1,10 +1,14 @@
-import { Link } from "react-router-dom";
 import { useState } from "react";
+
+import SideNav, { SidebarItem } from "./nav/SideNav";
+import Footer from "./nav/Footer";
 
 import TestWidget from "./widgets/TestWidget";
 import Profile from "./widgets/Profile.jsx";
-
-import SideNav, { SidebarItem } from "./nav/SideNav";
+import MyPantry from "./widgets/MyPantry.jsx";
+import CarbonFootprint from "./widgets/CarbonFootprint.jsx";
+import Recipes from "./widgets/Recipes.jsx";
+import GroceryList from "./widgets/GroceryList.jsx";
 
 //import the needed icons from lucide react
 import {
@@ -15,7 +19,7 @@ import {
   CircleUserRound,
   Leaf,
 } from "lucide-react";
-import Footer from "./nav/Footer";
+
 
 export default function UserData() {
   const [active, setActive] = useState("TestWidget");
@@ -24,28 +28,33 @@ export default function UserData() {
     <>
       <div className="flex w-full pageContent">
         <SideNav>
-          <button className="text-left" onClick={() => setActive("TestWidget")}>
-            <SidebarItem
-              icon={<LayoutGrid size={20} />}
-              text="Dashboard"
-              active
-            />
-          </button>
-          <Link to="/mypantry"><SidebarItem icon={<Sandwich size={20} />} text="My Pantry" /></Link>
-          <SidebarItem icon={<CookingPot size={20} />} text="Recipes" alert />
-          <SidebarItem icon={<ClipboardList size={20} />} text="Grocery List" />
-          <SidebarItem icon={<Leaf size={20} />} text="Carbon Footprint" />
-          <button className="text-left" onClick={() => setActive("Profile")}>
-          <SidebarItem
-            icon={<CircleUserRound size={20} />}
-            text="Account Settings"
-          />
-          </button>
+          <a className="text-left" onClick={() => setActive("TestWidget")}>
+            <SidebarItem icon={<LayoutGrid size={20} />} text="Dashboard" />
+          </a>
+          <a className="text-left" onClick={() => setActive("MyPantry")}>
+            <SidebarItem icon={<Sandwich size={20} />} text="My Pantry" />
+          </a>
+          <a className="text-left" onClick={() => setActive("Recipes")}>
+            <SidebarItem icon={<CookingPot size={20} />} text="Recipes" alert />
+          </a>
+          <a className="text-left" onClick={() => setActive("GroceryList")}>
+            <SidebarItem icon={<ClipboardList size={20} />} text="Grocery List" />
+          </a>
+          <a className="text-left" onClick={() => setActive("CarbonFootprint")}>
+            <SidebarItem icon={<Leaf size={20} />} text="Carbon Footprint" />
+          </a>
+          <a className="text-left" onClick={() => setActive("Profile")}>
+            <SidebarItem icon={<CircleUserRound size={20} />} text="Account Settings" />
+          </a>
         </SideNav>
 
         <div className="w-full pageContent">
           {active === "TestWidget" && <TestWidget title="TestWidget" />}
           {active === "Profile" && <Profile title="Profile" />}
+          {active === "MyPantry" && <MyPantry title="MyPantry" />}
+          {active === "CarbonFootprint" && <CarbonFootprint title="CarbonFootprint" />}
+          {active === "Recipes" && <Recipes title="Recipes" />}
+          {active === "GroceryList" && <GroceryList title="GroceryList" />}
           <Footer />
         </div>
       </div>

@@ -38,7 +38,7 @@ function GroceryList() {
   console.log(userGroceryList)
 
   return (
-    <>
+    <div id="widgetContainer">
       <h1 className="mt-5 text-center text-3xl font-bold leading-9 tracking-tight text-green-600">
         Grocery List
       </h1>
@@ -56,7 +56,7 @@ function GroceryList() {
           ))}
         </p>
       </div>
-    </>
+    </div>
   );
 }
 
