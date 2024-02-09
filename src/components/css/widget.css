@@ -1,15 +1,49 @@
 #widgetContainer {
-   margin: 0;
-   padding: 30px;
-   min-height: 92vh;
+  margin: 0;
+  padding: 30px;
+  min-height: 92vh;
 }
 
 ul {
-   padding: 0;
-   margin: 0;
+  padding: 0;
+  margin: 0;
 }
 
 button {
-   margin: 0;
-   padding: 0;
+  margin: 0;
+  padding: 0;
+}
+
+/* Profile Page  */
+#ProfileContainer {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: space-around;
+   align-items: center;
+   margin-top: 20px;
+   margin-bottom: 20px;
+}
+
+#profileImageContainer {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+#mainProfileImage {
+   object-fit: cover;
+   width: 200px;
+  height: 200px;
+}
+
+hr {
+   border: 2px solid #ffbb00;
+}
+
+#updateDetails {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   flex-wrap: wrap;
 }
