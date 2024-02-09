@@ -10,6 +10,7 @@ import Dashboard from "./Dashboard";
 import AuthDetails from "./auth/AuthDetails";
 import ForgotPassword from "./auth/ForgotPassword";
 import SideNav from "./nav/SideNav";
+import MyPantry from "./MyPantry";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
 
       <Route path="/profile" element={<Profile />} />
       <Route path="/dashboard" element={<Dashboard />} />   
+      <Route path="/mypantry" element={<MyPantry />} />   
     </Routes>
   );
 }
