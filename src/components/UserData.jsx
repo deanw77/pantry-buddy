@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 import GroceryList from "./widgets/GroceryList";
 import PantryEntryForm from "./widgets/PantryEntryForm"
-import SearchBarRecipe from "./widgets/SearchBarRecipe";
+import SearchBarRecipeParent from "./widgets/SearchBarRecipeParent";
 
 import SideNav, { SidebarItem } from "./nav/SideNav";
 
@@ -40,7 +40,7 @@ export default function UserData() {
         <GroceryList />
         <Link to="/profile"><button>Profile Page</button></Link>
         <PantryEntryForm />
-        <SearchBarRecipe />
+        <SearchBarRecipeParent />
       </div>
     </div>
     <div>

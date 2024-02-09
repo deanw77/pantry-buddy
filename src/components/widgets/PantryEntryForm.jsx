@@ -1,84 +1,110 @@
-// import React, {useState} from "react";
-
-// function PantryEntryForm() {
-//   const [foodEntry, setFoodEntry] = useState('');
-//   const [expiryDate, setExpiryDate] = useState('');
-
-
-//   const handleSubmit = async (e) => {
-//     //logic to add to firebase
-//         e.preventDefault();
-//         setFoodEntry('');
-//         setExpiryDate('');
-//     }
-//   return (
-//     <form onSubmit={handleSubmit}>
-//         <label>
-//             Food Name: 
-//             <input
-//               type = 'text'
-//               value= {foodEntry}
-//               onChange = {(e) => setFoodEntry(e.target.value)}
-//               />
-//         </label>
-//         <label>
-//             Expiry Date:
-//             <input
-//              type = 'date'
-//              value = {expiryDate}
-//              onChange = {(e) => setExpiryDate(e.target.value)}
-//              />
-//         </label>
-//         <button type="submit">Add Food</button>
-//     </form>
-
-//   );
-// }
-
-// export default PantryEntryForm
-
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
+import { auth, db } from "../../firebase/firebase";
+import {
+  collection,
+  query,
+  where,
+  getDocs,
+} from "firebase/firestore";
 
 function PantryEntryForm() {
-  const [foodEntry, setFoodEntry] = useState('');
-  const [expiryDate, setExpiryDate] = useState('');
+  
+  const [foodEntry, setFoodEntry] = useState("");
+  const [expiryDate, setExpiryDate] = useState("");
+  const [userPantryList, setUserPantryList] = useState([]);
+  const [userData, setUserData] = useState([]);
+  const user = userData.uid;
 
   const handleSubmit = async (e) => {
+    //logic to add to firebase
     e.preventDefault();
-    // Logic to add to firebase
-    setFoodEntry('');
-    setExpiryDate('');
+    setFoodEntry("");
+    setExpiryDate("");
   };
 
+  const fetchDataOnce = async () => {
+    const q = query(
+      collection(db, "userData"),
+      where("name", "==", `${user}`)
+    );
+
+    const querySnapshot = await getDocs(q);
+
+    querySnapshot.forEach((doc) => {
+      // doc.data() is never undefined for query doc snapshots
+      setUserData(doc.data());
+    });
+  };
+
+  const fetchData2Once = async () => {
+    const q = query(
+      collection(db, "pantryList"),
+      where("name", "==", `${auth.currentUser.uid}`)
+    );
+
+    const querySnapshot = await getDocs(q);
+
+    querySnapshot.forEach((doc) => {
+      // doc.data() is never undefined for query doc snapshots
+      setUserPantryList(doc.data());
+    });
+  };
+
+  useEffect(() => {
+    fetchDataOnce();
+    fetchData2Once();
+  }, []);
+
+  let itemName = [];
+    let itemExpiry = [];
+
+  const pantryItems = () => {
+    const keysArray = Object.keys(userPantryList)
+    
+
+    for (let index = 1; index < keysArray.length; index++) {
+      itemName.push(userPantryList[index][0])
+      itemExpiry.push(userPantryList[index][1])
+    }
+  }
+
+  pantryItems();
+
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col items-center space-y-4 bg-white p-6 rounded-lg shadow-md">
-        <div className="flex flex-col space-y-2">
-          <label className="block text-green-700 text-sm font-bold mb-2">
-            Food Name:
-            <input
-              type="text"
-              value={foodEntry}
-              onChange={(e) => setFoodEntry(e.target.value)}
-              className="w-full px-3 py-2 border border-green-300 rounded-md focus:outline-none focus:ring focus:ring-green-500"
-              placeholder="Enter food name"
-            />
-          </label>
+    <>
+      <div id="PantryList">
+        <h1>Pantry List</h1>
+        <div className="m-5 mb-20">
+          <ul>
+          {Object.keys(itemName).map((keyName, i) => (
+            <li key={i}>
+              <span className="input-label">{itemName[keyName]}</span>
+            </li>
+          ))}
+          </ul>
         </div>
-        <div className="flex flex-col space-y-2">
-          <label className="block text-green-700 text-sm font-bold mb-2">
-            Expiry Date:
-            <input
-              type="date"
-              value={expiryDate}
-              onChange={(e) => setExpiryDate(e.target.value)}
-              className="w-full px-3 py-2 border border-green-300 rounded-md focus:outline-none focus:ring focus:ring-green-500"
-            />
-          </label>
-        </div>
-        <button type="submit" className="px-4 py-2 bg-green-500 text-white font-semibold rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50">
-          Add Food
-        </button>
-    </form>
+      </div>
+
+      <form onSubmit={handleSubmit}>
+        <label>
+          Food Name:
+          <input
+            type="text"
+            value={foodEntry}
+            onChange={(e) => setFoodEntry(e.target.value)}
+          />
+        </label>
+        <label>
+          Expiry Date:
+          <input
+            type="date"
+            value={expiryDate}
+            onChange={(e) => setExpiryDate(e.target.value)}
+          />
+        </label>
+        <button type="submit">Add Food</button>
+      </form>
+    </>
   );
 }
 
