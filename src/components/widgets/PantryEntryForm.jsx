@@ -5,28 +5,19 @@ import {
   query,
   where,
   getDocs,
+  doc,
+  setDoc,
 } from "firebase/firestore";
 
 function PantryEntryForm() {
-  
   const [foodEntry, setFoodEntry] = useState("");
   const [expiryDate, setExpiryDate] = useState("");
   const [userPantryList, setUserPantryList] = useState([]);
   const [userData, setUserData] = useState([]);
   const user = userData.uid;
 
-  const handleSubmit = async (e) => {
-    //logic to add to firebase
-    e.preventDefault();
-    setFoodEntry("");
-    setExpiryDate("");
-  };
-
   const fetchDataOnce = async () => {
-    const q = query(
-      collection(db, "userData"),
-      where("name", "==", `${user}`)
-    );
+    const q = query(collection(db, "userData"), where("name", "==", `${user}`));
 
     const querySnapshot = await getDocs(q);
 
@@ -55,32 +46,28 @@ function PantryEntryForm() {
     fetchData2Once();
   }, []);
 
-  let itemName = [];
-    let itemExpiry = [];
+  const handleSubmit = async (e) => {
+    //logic to add to firebase
+    e.preventDefault();
 
-  const pantryItems = () => {
-    const keysArray = Object.keys(userPantryList)
-    
+    const valRef = doc(db, "pantryList", `${auth.currentUser.uid}`);
+    await setDoc(valRef, { [foodEntry]: `${expiryDate}` }, { merge: true });
+    fetchDataOnce();
 
-    for (let index = 1; index < keysArray.length; index++) {
-      itemName.push(userPantryList[index][0])
-      itemExpiry.push(userPantryList[index][1])
-    }
-  }
-
-  pantryItems();
+    setFoodEntry("");
+    setExpiryDate("");
+  };
 
   return (
     <>
       <div id="PantryList">
-        <h1>Pantry List</h1>
+        <h1 className="text-center text-2xl">My Pantry</h1>
+
         <div className="m-5 mb-20">
           <ul>
-          {Object.keys(itemName).map((keyName, i) => (
-            <li key={i}>
-              <span className="input-label">{itemName[keyName]}</span>
-            </li>
-          ))}
+            {Object.keys(userPantryList).map((key, index) => (
+              <li key={index}>{key}:  -- {userPantryList[key]}</li>
+            ))}
           </ul>
         </div>
       </div>
