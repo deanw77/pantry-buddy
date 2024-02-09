@@ -80,8 +80,8 @@ export default function Profile() {
 
   return (
     <div id="widgetContainer" className="bg-amber-50">
-      <h1 className="text-center text-2xl font-bold leading-9 tracking-tight text-amber-500">
-        Update Profile
+      <h1 className="text-center text-2xl font-bold leading-9 tracking-tight text-green-700">
+        Account Settings
       </h1>
 
       <div id="ProfileContainer">
@@ -103,7 +103,7 @@ export default function Profile() {
       <div id="updateDetails">
         <h3 className="m-3 font-bold"> Add or Change Profile Picture </h3>
 
-        <input className="m-5 flex w-300 justify-center rounded-md bg-amber-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600" type="file" onChange={(e) => handleupload(e)} />
+        <input className="m-5 flex w-300 justify-center rounded-md bg-amber-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-green-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600" type="file" onChange={(e) => handleupload(e)} />
 
         <button
           onClick={handleImageClick}
@@ -132,7 +132,7 @@ export default function Profile() {
 
       <button
         onClick={userSignOut}
-        className="m-5 flex w-300 justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+        className="m-5 flex w-300 justify-center rounded-md bg-stone-900 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-amber-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
       >
         Sign Out
       </button>

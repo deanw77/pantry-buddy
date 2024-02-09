@@ -35,7 +35,7 @@ export default function UserData() {
             <SidebarItem icon={<Sandwich size={20} />} text="My Pantry" />
           </a>
           <a className="text-left" onClick={() => setActive("Recipes")}>
-            <SidebarItem icon={<CookingPot size={20} />} text="Recipes" alert />
+            <SidebarItem icon={<CookingPot size={20} />} text="Recipes"/>
           </a>
           <a className="text-left" onClick={() => setActive("GroceryList")}>
             <SidebarItem icon={<ClipboardList size={20} />} text="Grocery List" />
