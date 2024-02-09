@@ -1,9 +1,19 @@
+import {
+  collection,
+  query,
+  where,
+  getDocs,
+  doc,
+  setDoc,
+} from "firebase/firestore";
+import { auth, imgDB, db } from "../../firebase/firebase";
+
 //navigation sidebar with the option to expand and close it for the user dashboard and its section pages
 //importing icons from lucide react
 import { ChevronLast, ChevronFirst } from "lucide-react";
 
 //import createContext, useContext, useState
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 
 //make sidebar items close and expand based on the context of the sidebar - wrap children elements in this
 const SidebarContext = createContext();
@@ -11,6 +21,28 @@ const SidebarContext = createContext();
 //set default state of the sidebar as expanded
 export default function SideNav({ children }) {
   const [expanded, setExpanded] = useState(true);
+
+  // Get user Details for bottom of Nav
+  const [userData, setUserData] = useState([]);
+  const user = auth.currentUser.uid;
+
+  const fetchDataOnce = async () =>{
+    const q = query(collection(db, "userData"), where("name", "==", `${user}`));
+    const querySnapshot = await getDocs(q);
+
+    querySnapshot.forEach((doc) => {
+      // doc.data() is never undefined for query doc snapshots
+      setUserData(doc.data());
+    });
+  }
+
+  useEffect(() => {
+    fetchDataOnce()
+  }, []);
+
+  const profileImage = userData.ProfileImage;
+  const username = userData.Username;
+  const useremail = userData.Email;
 
   //sidebar styling and positioning
   //may remove logo + user details to add to a top navbar if we decide to create one
@@ -39,8 +71,7 @@ export default function SideNav({ children }) {
         </SidebarContext.Provider>
         <div className="border-t flex p-3">
           <img
-            src="./images/logo_icon_square.png"
-            alt="User Profile Image"
+            src={profileImage}
             className="w-10 h-10 rounded-full"
           />
           <div
@@ -49,8 +80,8 @@ export default function SideNav({ children }) {
             }`}
           >
             <div className="leading-4">
-              <h4 className="font-semibold">Jane Doe</h4>
-              <span className="text-xs text-gray-600">janedoe@mail.com</span>
+              <h4 className="font-semibold">{username}</h4>
+              <span className="text-xs text-gray-600">{useremail}</span>
             </div>
           </div>
         </div>

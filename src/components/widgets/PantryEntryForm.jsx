@@ -5,15 +5,15 @@ import {
   query,
   where,
   getDocs,
-  setDoc,
-  doc,
 } from "firebase/firestore";
 
 function PantryEntryForm() {
-  const user = auth.currentUser.uid;
+  
   const [foodEntry, setFoodEntry] = useState("");
   const [expiryDate, setExpiryDate] = useState("");
   const [userPantryList, setUserPantryList] = useState([]);
+  const [userData, setUserData] = useState([]);
+  const user = userData.uid;
 
   const handleSubmit = async (e) => {
     //logic to add to firebase
@@ -24,8 +24,22 @@ function PantryEntryForm() {
 
   const fetchDataOnce = async () => {
     const q = query(
-      collection(db, "pantryList"),
+      collection(db, "userData"),
       where("name", "==", `${user}`)
+    );
+
+    const querySnapshot = await getDocs(q);
+
+    querySnapshot.forEach((doc) => {
+      // doc.data() is never undefined for query doc snapshots
+      setUserData(doc.data());
+    });
+  };
+
+  const fetchData2Once = async () => {
+    const q = query(
+      collection(db, "pantryList"),
+      where("name", "==", `${auth.currentUser.uid}`)
     );
 
     const querySnapshot = await getDocs(q);
@@ -38,6 +52,7 @@ function PantryEntryForm() {
 
   useEffect(() => {
     fetchDataOnce();
+    fetchData2Once();
   }, []);
 
   let itemName = [];
@@ -51,7 +66,6 @@ function PantryEntryForm() {
       itemName.push(userPantryList[index][0])
       itemExpiry.push(userPantryList[index][1])
     }
-    console.log(itemName + ' ' + itemExpiry)
   }
 
   pantryItems();
@@ -62,9 +76,9 @@ function PantryEntryForm() {
         <h1>Pantry List</h1>
         <div className="m-5 mb-20">
           <ul>
-          {Object.keys(itemName, itemExpiry).map((keyName, keyName2, i) => (
+          {Object.keys(itemName).map((keyName, i) => (
             <li key={i}>
-              <span className="input-label">{itemName[keyName]}: {itemExpiry[keyName2]}</span>
+              <span className="input-label">{itemName[keyName]}</span>
             </li>
           ))}
           </ul>
