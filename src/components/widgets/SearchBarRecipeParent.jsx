@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import SearchBarRecipe from './SearchBarRecipe';
 import SpoonacularApi from '../SpoonacularApi';
+import RecipeCard from './RecipeCard';
 
 
 function SearchBarRecipeParent () {
@@ -15,6 +16,8 @@ return (
     <div>
         <SearchBarRecipe onSearch = {handleSearch} />
         <SpoonacularApi query = {query} />
+        <RecipeCard />
+
     </div>
   );
 };

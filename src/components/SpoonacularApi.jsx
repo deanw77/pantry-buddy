@@ -54,7 +54,8 @@ const SpoonacularApi = ({ query }) => {
     const [recipes, setRecipes] = useState([]);
 
     const fetchRecipes = async () => {
-        const apiKey = '831da13c3dcd407ea68406f0fd51a6c4';
+        // const apiKey = '831da13c3dcd407ea68406f0fd51a6c4';
+        const apiKey = '056260ea1ea6431d9482489045ae8ce3';
         const url = 'https://api.spoonacular.com/recipes/complexSearch';
 
         try {
@@ -97,14 +98,18 @@ const SpoonacularApi = ({ query }) => {
         }
     }, [query]);
 
+    // responsive display - 4 containers will be displayed on large screen, 2 on medium screen and 1 on small
+
     return (
-        <div>
+        <div className=' mx-auto  py-8 gap-6 pt-4 grid grid-cols-2 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 bg-amber-50'>
             {recipes.map((recipe) => (
-                <div key={recipe.id}>
+                <div key={recipe.id}
+                    //tailwind animation on img with hover and duration of animation
+                    className='border shadow-lg hover:scale-105 duration-500'>
                     <RecipeCard
                         recipeTitle={recipe.title}
                         ingredients={recipe.extendedIngredients}
-                        imageUrl= {recipe.image}
+                        imageUrl={recipe.image}
                         sourceUrl={recipe.sourceUrl}  // Pass the sourceUrl to the RecipeCard component
                     />
                 </div>
