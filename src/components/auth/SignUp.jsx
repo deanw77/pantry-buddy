@@ -32,19 +32,19 @@ export default function SignUp() {
     const userDetails = doc(db, "userData", `${auth.currentUser.uid}`);
     await setDoc(
       userDetails,
-      { name: `${auth.currentUser.uid}`, Username: email, Email: email },
+      { name: `${auth.currentUser.uid}`, Email: email, Username: 'Pantry Buddy' },
       { merge: true }
     );
     const userPantry = doc(db, "pantryList", `${auth.currentUser.uid}`);
     await setDoc(
       userPantry,
-      { name: `${auth.currentUser.uid}`, 1: ['Rice', '12/03/24'], 2: ['Beans', '31/12/24']},
+      { name: `${auth.currentUser.uid}`},
       { merge: true }
     );
     const userGroceries = doc(db, "groceryList", `${auth.currentUser.uid}`);
     await setDoc(
       userGroceries,
-      { name: `${auth.currentUser.uid}`, 1: 'Milk', 2: 'Eggs', 3: 'Pineapples'},
+      { name: `${auth.currentUser.uid}`},
       { merge: true }
     );
   }

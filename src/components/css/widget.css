@@ -58,3 +58,32 @@ hr {
   margin-bottom: 20px;
   box-shadow: 0 0 10px 1px black;
 }
+
+#PantryList li {
+  background: #FDE68A;
+  font-weight: bold;
+  padding: 3px;
+}
+
+#PantryList a {
+  cursor: pointer;
+}
+
+#PantryList li:nth-child(odd) {
+  background: #D9F99D;
+}
+
+#PantryListItem {
+  display: inline-block;
+  width: 50%;
+}
+
+#PantryListExpiry {
+  display: inline-block;
+  width: 40%;
+}
+
+#PantryListDelete {
+  display: inline-block;
+  width: 10%;
+}
