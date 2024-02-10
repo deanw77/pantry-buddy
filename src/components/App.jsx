@@ -12,6 +12,7 @@ import ForgotPassword from "./auth/ForgotPassword";
 import SideNav from "./nav/SideNav";
 import MyPantry from "./widgets/MyPantry";
 import Recipes from "./widgets/Recipes";
+import RecipeCard from "./widgets/RecipeCard";
 
 function App() {
   return (
@@ -27,7 +28,8 @@ function App() {
       <Route path="/profile" element={<Profile />} />
       <Route path="/dashboard" element={<Dashboard />} />   
       <Route path="/mypantry" element={<MyPantry />} />
-      <Route path="/recipes" element={<Recipes />} />   
+      <Route path="/recipes" element={<Recipes />} />  
+      <Route path="/recipe-card" element={<RecipeCard />} />  
     </Routes>
   );
 }
