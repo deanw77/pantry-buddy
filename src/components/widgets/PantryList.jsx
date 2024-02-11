@@ -81,9 +81,9 @@ function PantryList() {
 
   return (
     <>
-      <div className="max-w-m rounded overflow-hidden shadow-lg justify-center">
+      <div className="max-w-m justify-center bg-white">
         <div className="px-6 py-4">
-          <div className="font-bold text-xl mb-2">My Pantry</div>
+          <div className="m-5 text-3xl font-bold leading-9 tracking-tight text-green-600">My Pantry</div>
           <div className="m-5 mb-10">
             <ul id="PantryList">
               {Object.keys(userPantryList).map((key, index) => (
