@@ -20,7 +20,7 @@ function SearchBarRecipe({ onSearch }) {
                 value={recipeQuery}
                 onChange={handleInputChange}
                 className="w-full p-2 border-2 border-green-300 rounded-lg focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500"
-                placeholder="Enter a recipe"
+                placeholder="Enter ingredient"
             />
             <button
                 type="submit"

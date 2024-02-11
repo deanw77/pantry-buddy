@@ -101,7 +101,7 @@ const SpoonacularApi = ({ query }) => {
     // responsive display - 4 containers will be displayed on large screen, 2 on medium screen and 1 on small
 
     return (
-        <div className=' mx-auto  py-8 gap-6 pt-4 grid grid-cols-2 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 bg-amber-50'>
+        <div className=' mx-auto py-8 gap-6 pt-4 grid grid-cols-2 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 bg-neutral-50'>
             {recipes.map((recipe) => (
                 <div key={recipe.id}
                     //tailwind animation on img with hover and duration of animation
