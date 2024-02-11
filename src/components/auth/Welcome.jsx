@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 import logo from "../../assets/images/logo_transparent.png";
-import "./css/dashboard.css";
+import "../css/dashboard.css";
 
 export default function Dashboard() {
   return (

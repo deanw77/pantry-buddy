@@ -1,7 +1,10 @@
+import RecipeCard from '../widgets/RecipeCard'
+
 function Recipes() {
     return ( 
-        <div id="widgetContainer" className="flex">
+        <div id="widgetContainer">
             <h1>Recipes Display</h1>
+            <RecipeCard />
         </div>
      );
 }

@@ -9,8 +9,9 @@ import {
   setDoc,
 } from "firebase/firestore";
 
+import "../css/widget.css";
 
-function PantryEntryForm() {
+function PantryList() {
   const [foodEntry, setFoodEntry] = useState("");
   const [expiryDate, setExpiryDate] = useState("");
   const [userPantryList, setUserPantryList] = useState([]);
@@ -65,34 +66,58 @@ function PantryEntryForm() {
     setExpiryDate("");
   };
 
-  return (
-      <div className="max-w-m rounded overflow-hidden shadow-lg justify-center">
-        <div className="font-bold text-xl mb-2">My Pantry</div>
+  const deletePantryItem = async (value) => {
+    const current = { ...userPantryList };
+    delete current[value];
+    setUserPantryList(current);
 
-        <label>
-          Food Name:
-          <input
-            type="text"
-            value={foodEntry}
-            onChange={(e) => setFoodEntry(e.target.value)}
-          />
-        </label>
-        <label>
-          Expiry Date:
-          <input
-            type="date"
-            value={expiryDate}
-            onChange={(e) => setExpiryDate(e.target.value)}
-          />
-        </label>
-        <button
-          onClick={handleSubmit}
-          className="flex w-full justify-center rounded-md bg-green-600 px-3 py-1.5 my-3 text-sm font-semibold leading-6 text-black shadow-sm hover:bg-amber-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600"
-        >
-          Add Item To Pantry
-        </button>
+    console.log(userPantryList);
+  };
+
+  return (
+    <>
+      <div className="max-w-m rounded overflow-hidden shadow-lg justify-center">
+        <div className="px-6 py-4">
+          <div className="font-bold text-xl mb-2">My Pantry</div>
+          <div className="m-5 mb-10">
+            <ul id="PantryList">
+              {Object.keys(userPantryList).map((key, index) => (
+                <li key={index}>
+                  <span id="PantryListItem">{key}</span>
+                  <span id="PantryListExpiry">{userPantryList[key]}</span>
+                  <a onClick={() => deletePantryItem(key)}>
+                    <span id="PantryListDelete">X</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <label>
+            Food Name:
+            <input
+              type="text"
+              value={foodEntry}
+              onChange={(e) => setFoodEntry(e.target.value)}
+            />
+          </label>
+          <label>
+            Expiry Date:
+            <input
+              type="date"
+              value={expiryDate}
+              onChange={(e) => setExpiryDate(e.target.value)}
+            />
+          </label>
+          <button
+            onClick={handleSubmit}
+            className="flex w-full justify-center rounded-md bg-green-600 px-3 py-1.5 my-3 text-sm font-semibold leading-6 text-black shadow-sm hover:bg-amber-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600"
+          >
+            Add Item To Pantry
+          </button>
+        </div>
       </div>
+    </>
   );
 }
 
-export default PantryEntryForm;
+export default PantryList;

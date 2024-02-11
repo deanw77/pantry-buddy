@@ -4,7 +4,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { Link, useNavigate } from "react-router-dom";
 
 import logo from "../../assets/images/logo_transparent.png";
-import "./css/dashboard.css";
+import "../css/dashboard.css";
 
 export default function Login() {
   const [email, setEmail] = useState("");

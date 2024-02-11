@@ -1,6 +1,7 @@
 #widgetContainer {
   margin: 0;
-  padding: 30px;
+  padding: 10px;
+  padding-top: 30px;
   min-height: 92vh;
 }
 

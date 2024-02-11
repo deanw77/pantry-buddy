@@ -63,6 +63,7 @@ export default function Profile() {
 
   useEffect(() => {
     fetchDataOnce()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const profileImage = userData.ProfileImage;

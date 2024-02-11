@@ -5,11 +5,9 @@ import {
   query,
   where,
   getDocs,
-  setDoc,
-  doc,
 } from "firebase/firestore";
 
-import "../auth/css/dashboard.css";
+import "../css/dashboard.css";
 
 function GroceryList() {
   const user = auth.currentUser.uid;
@@ -31,6 +29,7 @@ function GroceryList() {
 
   useEffect(() => {
     fetchDataOnce()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // const addGroceryItem = async () => {
@@ -48,7 +47,7 @@ function GroceryList() {
   // }, []);
 
   return (
-    <div id="widgetContainer">
+    <div id="widgetContainer" className="flex bg-amber-50">
       <h1 className="mt-5 text-center text-3xl font-bold leading-9 tracking-tight text-green-600">
         Grocery List
       </h1>

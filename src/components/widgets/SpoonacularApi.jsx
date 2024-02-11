@@ -48,7 +48,7 @@
 
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
-import RecipeCard from './widgets/RecipeCard';
+import RecipeCard from './RecipeCard';
 
 const SpoonacularApi = ({ query }) => {
     const [recipes, setRecipes] = useState([]);

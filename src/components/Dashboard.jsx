@@ -1,14 +1,14 @@
 import { useState } from "react";
 
-import SideNav, { SidebarItem } from "./nav/SideNav";
-import Footer from "./nav/Footer";
+import SideNav, { SidebarItem } from "./nav/SideNav.jsx";
+import Footer from "./nav/Footer.jsx";
 
-import TestWidget from "./widgets/TestWidget";
-import Profile from "./widgets/Profile.jsx";
-import MyPantry from "./widgets/MyPantry.jsx";
-import CarbonFootprint from "./widgets/CarbonFootprint.jsx";
-import Recipes from "./widgets/Recipes.jsx";
-import GroceryList from "./widgets/GroceryList.jsx";
+import Home from "./primaryPages/Home.jsx";
+import Profile from "./primaryPages/Profile.jsx";
+import MyPantry from "./primaryPages/MyPantry.jsx";
+import CarbonFootprint from "./primaryPages/CarbonFootprint.jsx";
+import Recipes from "./primaryPages/Recipes.jsx";
+import GroceryList from "./primaryPages/GroceryList.jsx";
 
 //import the needed icons from lucide react
 import {
@@ -22,14 +22,14 @@ import {
 
 
 export default function UserData() {
-  const [active, setActive] = useState("TestWidget");
+  const [active, setActive] = useState("Home");
 
   return (
     <>
       <div className="flex w-full pageContent">
         <SideNav>
-          <a className="text-left" onClick={() => setActive("TestWidget")}>
-            <SidebarItem icon={<LayoutGrid size={20} />} text="Dashboard" />
+          <a className="text-left" onClick={() => setActive("Home")}>
+            <SidebarItem icon={<LayoutGrid size={20} />} text="Home" />
           </a>
           <a className="text-left" onClick={() => setActive("MyPantry")}>
             <SidebarItem icon={<Sandwich size={20} />} text="My Pantry" />
@@ -49,12 +49,13 @@ export default function UserData() {
         </SideNav>
 
         <div className="w-full pageContent">
-          {active === "TestWidget" && <TestWidget title="TestWidget" />}
+          {active === "Home" && <Home title="Home" />}
           {active === "Profile" && <Profile title="Profile" />}
           {active === "MyPantry" && <MyPantry title="MyPantry" />}
           {active === "CarbonFootprint" && <CarbonFootprint title="CarbonFootprint" />}
           {active === "Recipes" && <Recipes title="Recipes" />}
           {active === "GroceryList" && <GroceryList title="GroceryList" />}
+          
           <Footer />
         </div>
       </div>

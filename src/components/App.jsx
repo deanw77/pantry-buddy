@@ -5,13 +5,13 @@ import { Routes, Route } from "react-router-dom";
 import Welcome from "./auth/Welcome";
 import Signup from "./auth/SignUp";
 import Login from "./auth/Login";
-import Profile from "./widgets/Profile";
+import Profile from "./primaryPages/Profile";
 import Dashboard from "./Dashboard";
 import AuthDetails from "./auth/AuthDetails";
 import ForgotPassword from "./auth/ForgotPassword";
 import SideNav from "./nav/SideNav";
-import MyPantry from "./widgets/MyPantry";
-import Recipes from "./widgets/Recipes";
+import MyPantry from "./primaryPages/MyPantry";
+import Recipes from "./primaryPages/Recipes";
 
 function App() {
   return (
