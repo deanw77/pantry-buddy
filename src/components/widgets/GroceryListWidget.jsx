@@ -1,35 +1,27 @@
+// Import Functions from React
 import { useState, useEffect } from "react";
-import { auth, db } from "../../firebase/firebase";
-import {
-  collection,
-  query,
-  where,
-  getDocs,
-  doc,
-  setDoc,
-  updateDoc,
-  deleteField,
-} from "firebase/firestore";
 
-import "../css/dashboard.css";
-import "../css/widget.css";
+// Import Required Functions fom FireBase
+import { auth, db } from "../../firebase/firebase";
+import { collection, query, where, getDocs, doc, setDoc, updateDoc, deleteField, } from "firebase/firestore";
 
 function GroceryList() {
-  const user = auth.currentUser.uid;
+  // States required to Store Form Entry and Database information
   const [foodEntry, setFoodEntry] = useState("");
   const [userGroceryList, setUserGroceryList] = useState([]);
 
-  const fetchDataOnce = async () => {
-    const q = query(
-      collection(db, "groceryList"),
-      where("name", "==", `${user}`)
-    );
+  // Store Current Users UID
+  const user = auth.currentUser.uid;
 
+  // Fetch the users Shopping List from Database
+  const fetchPantryListOnce = async () => {
+    const q = query(collection(db, "groceryList"),  where("name", "==", `${user}`));
     const querySnapshot = await getDocs(q);
 
+    // Store the Shopping List from the database into the userGroceryList variable.
     querySnapshot.forEach((doc) => {
-      // doc.data() is never undefined for query doc snapshots
       setUserGroceryList(doc.data());
+      // This removes the uid field from the userGroceryList Array
       setUserGroceryList((current) => {
         // eslint-disable-next-line no-unused-vars
         const { name, ...rest } = current;
@@ -38,26 +30,35 @@ function GroceryList() {
     });
   };
 
+    // Run the Database inside of useEffect so they don't run repeatedly
   useEffect(() => {
-    fetchDataOnce();
+    fetchPantryListOnce();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // Take the data from the input field and add it to the users database.
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const valRef = doc(db, "groceryList", `${auth.currentUser.uid}`);
     await setDoc(valRef, { [foodEntry]: `${foodEntry}` }, { merge: true });
-    fetchDataOnce();
+    // Once we have added the data, we will to call the fetch data function to update the Shopping List variable
+    fetchPantryListOnce();
 
+    // Clear the form field
     setFoodEntry("");
   };
 
+  // Delete Item from Shooping List DataBase onClick event
   const deleteGroceryItem = async (value) => {
+    // Create an array contents of userGroceryList Variable
     const current = { ...userGroceryList };
+    // Delete the value passed, this will corespond to the item being deleted
     delete current[value];
+    // Set the Pantry List to the new set of a values
     setUserGroceryList(current);
 
+    // Delete the same value passed from the Database
     const valRef = doc(db, "groceryList", `${auth.currentUser.uid}`);
     const data = { [value]: deleteField() };
     updateDoc(valRef, data);
@@ -75,24 +76,30 @@ function GroceryList() {
           <li key={index} className="flex justify-between align-center m-1">
             <span id="PantryListItem" className="p-1 pl-5">{key}</span>
             <a onClick={() => deleteGroceryItem(key)}>
-              <span id="PantryListDelete" className="pr-3 m-0">X</span>
+              <div className="bg-red-700 flex align-center justify-center rounded-full">  
+                <span id="PantryListDelete" className="pr-3 m-0 text-white">
+                  X
+                </span>
+              </div>
             </a>
           </li>
         ))}
       </ul>
 
-      <label>
-        Food Name:
+      <label htmlFor="FoodName" className="font-semibold">
+        Food Name: 
+
         <input
           type="text"
           value={foodEntry}
           onChange={(e) => setFoodEntry(e.target.value)}
+          className="inline-block bg-gray-100 text-gray-700 border border-amber-600 rounded py-3 px-4 ml-5 leading-tight focus:bg-white focus:border-green-600 mb-3"
         />
       </label>
 
       <button
         onClick={handleSubmit}
-        className="flex w-full justify-center rounded-md bg-green-600 px-3 mt- py-1.5 text-sm font-semibold leading-6 text-black shadow-sm hover:bg-amber-500 focus-visible:outline focus-visible:outline-2"
+        className="w-full justify-center rounded-md bg-green-600 p-2 my-3 text-sm font-semibold leading-6 text-black shadow-lg hover:bg-amber-500"
       >
         Add Item To Shopping List
       </button>

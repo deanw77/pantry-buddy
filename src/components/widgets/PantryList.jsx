@@ -10,29 +10,14 @@ function PantryList() {
   const [foodEntry, setFoodEntry] = useState("");
   const [expiryDate, setExpiryDate] = useState("");
   const [userPantryList, setUserPantryList] = useState([]);
-  const [userData, setUserData] = useState([]);
+  // const [userData, setUserData] = useState([]);
 
   // Store Current Users UID
-  const user = userData.uid;
-
-  // Fetch the userData for the current user.
-  // This is needed so we can pair users UID with correct Pantry List
-  const fetchUserData = async () => {
-    const q = query(collection(db, "userData"), where("name", "==", `${user}`));
-    const querySnapshot = await getDocs(q);
-
-    querySnapshot.forEach((doc) => {
-      setUserData(doc.data());
-    });
-  };
+  const user = auth.currentUser.uid;
 
   // Fetch the users Pantry List from Database
   const fetchPantryListData = async () => {
-    const q = query(
-      collection(db, "pantryList"),
-      where("name", "==", `${auth.currentUser.uid}`)
-    );
-
+    const q = query(collection(db, "pantryList"), where("name", "==", `${user}`));
     const querySnapshot = await getDocs(q);
 
     // Store the Pantry List from the database into the userPantryList variable.
@@ -49,7 +34,6 @@ function PantryList() {
 
   // Run the Database inside of useEffect so they don't run repeatedly 
   useEffect(() => {
-    fetchUserData();
     fetchPantryListData();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -84,7 +68,6 @@ function PantryList() {
   };
 
   return (
-   
       <div className="bg-white p-6 flex flex-col justify-between">
 
           <div className="text-3xl font-bold text-green-600">
@@ -134,7 +117,7 @@ function PantryList() {
           >
             Add Item To Pantry
           </button>
-          
+
         </div> 
   );
 }
