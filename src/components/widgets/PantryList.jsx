@@ -1,36 +1,33 @@
+// Import Functions from React
 import { useState, useEffect } from "react";
-import { auth, db } from "../../firebase/firebase";
-import {
-  collection,
-  query,
-  where,
-  getDocs,
-  doc,
-  setDoc,
-  updateDoc,
-  deleteField,
-} from "firebase/firestore";
 
-import "../css/widget.css";
+// Import Required Functions fom FireBase
+import { auth, db } from "../../firebase/firebase";
+import { collection, query, where, getDocs, doc, setDoc, updateDoc, deleteField, } from "firebase/firestore";
 
 function PantryList() {
+  // States required to Store Form Entry and Database information
   const [foodEntry, setFoodEntry] = useState("");
   const [expiryDate, setExpiryDate] = useState("");
   const [userPantryList, setUserPantryList] = useState([]);
   const [userData, setUserData] = useState([]);
+
+  // Store Current Users UID
   const user = userData.uid;
 
-  const fetchDataOnce = async () => {
+  // Fetch the userData for the current user.
+  // This is needed so we can pair users UID with correct Pantry List
+  const fetchUserData = async () => {
     const q = query(collection(db, "userData"), where("name", "==", `${user}`));
     const querySnapshot = await getDocs(q);
 
     querySnapshot.forEach((doc) => {
-      // doc.data() is never undefined for query doc snapshots
       setUserData(doc.data());
     });
   };
 
-  const fetchData2Once = async () => {
+  // Fetch the users Pantry List from Database
+  const fetchPantryListData = async () => {
     const q = query(
       collection(db, "pantryList"),
       where("name", "==", `${auth.currentUser.uid}`)
@@ -38,13 +35,11 @@ function PantryList() {
 
     const querySnapshot = await getDocs(q);
 
+    // Store the Pantry List from the database into the userPantryList variable.
     querySnapshot.forEach((doc) => {
-      // doc.data() is never undefined for query doc snapshots
-
       setUserPantryList(doc.data());
-
+      // This removes the uid field from the userPantryList Array
       setUserPantryList((current) => {
-        // remove cost key from object
         // eslint-disable-next-line no-unused-vars
         const { name, ...rest } = current;
         return rest;
@@ -52,76 +47,95 @@ function PantryList() {
     });
   };
 
+  // Run the Database inside of useEffect so they don't run repeatedly 
   useEffect(() => {
-    fetchDataOnce();
-    fetchData2Once();
+    fetchUserData();
+    fetchPantryListData();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // Take the data from the two input fields and add it to the users database.
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const valRef = doc(db, "pantryList", `${auth.currentUser.uid}`);
     await setDoc(valRef, { [foodEntry]: `${expiryDate}` }, { merge: true });
-    fetchData2Once();
+    // Once we have added the data, we will to call the fetch data function to update the Pantry List variable
+    fetchPantryListData();
 
+    // Clear the form fields
     setFoodEntry("");
     setExpiryDate("");
   };
 
+  // Delete Item from Pantry DataBase onClick event
   const deletePantryItem = async (value) => {
+    // Create an array contents of UserPantryList Variable
     const current = { ...userPantryList };
+    // Delete the value passed, this will corespond to the item being deleted
     delete current[value];
+    // Set the Pantry List to the new set of a values
     setUserPantryList(current);
 
+    // Delete the same value passed from the Database
     const valRef = doc(db, "pantryList", `${auth.currentUser.uid}`);
     const data = {[value]: deleteField()}
     updateDoc(valRef, data)
   };
 
   return (
-    <>
-      <div className="max-w-m justify-center bg-white">
-        <div className="px-6 py-4">
-          <div className="m-5 text-3xl font-bold leading-9 tracking-tight text-green-600">My Pantry</div>
-          <div className="m-5 mb-10">
-            <ul id="PantryList">
-              {Object.keys(userPantryList).map((key, index) => (
-                <li key={index}>
-                  <span id="PantryListItem">{key}</span>
-                  <span id="PantryListExpiry">{userPantryList[key]}</span>
-                  <a onClick={() => deletePantryItem(key)}>
-                    <span id="PantryListDelete">X</span>
-                  </a>
-                </li>
-              ))}
-            </ul>
+   
+      <div className="bg-white p-6 flex flex-col justify-between">
+
+          <div className="text-3xl font-bold text-green-600">
+            My Pantry
           </div>
-          <label>
-            Food Name:
+
+          <ul id="PantryList">
+            {Object.keys(userPantryList).map((key, index) => (
+              <li key={index} className="flex justify-between align-center m-1">
+                <span id="PantryListItem" className="p-1 pl-5">{key}</span>
+                <span id="PantryListExpiry">{userPantryList[key]}</span>
+                <a onClick={() => deletePantryItem(key)}>
+                  <div className="bg-red-700 flex align-center justify-center rounded-full">
+                    <span id="PantryListDelete" className="pr-3  m-0 text-white">
+                      X 
+                    </span>
+                  </div> 
+                </a>
+              </li>
+            ))}
+          </ul>
+
+          <label htmlFor="FoodName" className="font-semibold">
+            Food Name: 
+          
             <input
               type="text"
               value={foodEntry}
               onChange={(e) => setFoodEntry(e.target.value)}
+              className="inline-block bg-gray-100 text-gray-700 border border-amber-600 rounded py-3 px-4 ml-5 leading-tight focus:bg-white focus:border-green-600 mb-3"
             />
           </label>
-          <label>
-            Expiry Date:
+          
+          <label htmlFor="FoodName" className="font-semibold">
+            Expiry Date: 
             <input
               type="date"
               value={expiryDate}
               onChange={(e) => setExpiryDate(e.target.value)}
+              className="inline-block bg-gray-100 text-gray-700 border border-amber-600 rounded py-3 px-4 ml-5 leading-tight focus:bg-white focus:border-green-600"
             />
           </label>
+
           <button
             onClick={handleSubmit}
-            className="flex w-full justify-center rounded-md bg-green-600 px-3 py-1.5 my-3 text-sm font-semibold leading-6 text-black shadow-sm hover:bg-amber-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600"
+            className="w-full justify-center rounded-md bg-green-600 p-2 my-3 text-sm font-semibold leading-6 text-black shadow-lg hover:bg-amber-500"
           >
             Add Item To Pantry
           </button>
-        </div>
-      </div>
-    </>
+          
+        </div> 
   );
 }
 

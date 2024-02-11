@@ -30,6 +30,11 @@ function GroceryList() {
     querySnapshot.forEach((doc) => {
       // doc.data() is never undefined for query doc snapshots
       setUserGroceryList(doc.data());
+      setUserGroceryList((current) => {
+        // eslint-disable-next-line no-unused-vars
+        const { name, ...rest } = current;
+        return rest;
+      });
     });
   };
 
