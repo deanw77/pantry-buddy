@@ -10,7 +10,7 @@ import swal from 'sweetalert';
 import logo from "../../assets/images/logo_transparent.png";
 
 // Import CSSFile
-import "./css/dashboard.css";
+import "../css/dashboard.css";
 
 export default function SignUp() {
   // UseStates for setting the data
