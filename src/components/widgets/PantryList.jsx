@@ -7,6 +7,8 @@ import {
   getDocs,
   doc,
   setDoc,
+  updateDoc,
+  deleteField,
 } from "firebase/firestore";
 
 import "../css/widget.css";
@@ -43,6 +45,7 @@ function PantryList() {
 
       setUserPantryList((current) => {
         // remove cost key from object
+        // eslint-disable-next-line no-unused-vars
         const { name, ...rest } = current;
         return rest;
       });
@@ -52,10 +55,10 @@ function PantryList() {
   useEffect(() => {
     fetchDataOnce();
     fetchData2Once();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleSubmit = async (e) => {
-    //logic to add to firebase
     e.preventDefault();
 
     const valRef = doc(db, "pantryList", `${auth.currentUser.uid}`);
@@ -71,7 +74,9 @@ function PantryList() {
     delete current[value];
     setUserPantryList(current);
 
-    console.log(userPantryList);
+    const valRef = doc(db, "pantryList", `${auth.currentUser.uid}`);
+    const data = {[value]: deleteField()}
+    updateDoc(valRef, data)
   };
 
   return (

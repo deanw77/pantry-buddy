@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import SearchBarRecipe from './SearchBarRecipe';
-import SpoonacularApi from '../SpoonacularApi';
+import SpoonacularApi from './SpoonacularApi';
 import RecipeCard from './RecipeCard';
 
 
@@ -20,6 +20,6 @@ return (
 
     </div>
   );
-};
+}
 
 export default SearchBarRecipeParent;

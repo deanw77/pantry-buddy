@@ -1,12 +1,6 @@
-import {
-  collection,
-  query,
-  where,
-  getDocs,
-  doc,
-  setDoc,
-} from "firebase/firestore";
-import { auth, imgDB, db } from "../../firebase/firebase";
+//  Import Requirements to Access Firebase Data
+import { collection, query, where, getDocs, } from "firebase/firestore";
+import { auth, db } from "../../firebase/firebase";
 
 //navigation sidebar with the option to expand and close it for the user dashboard and its section pages
 //importing icons from lucide react
@@ -19,6 +13,7 @@ import { createContext, useContext, useState, useEffect } from "react";
 const SidebarContext = createContext();
 
 //set default state of the sidebar as expanded
+// eslint-disable-next-line react/prop-types
 export default function SideNav({ children }) {
   const [expanded, setExpanded] = useState(true);
 
@@ -26,7 +21,7 @@ export default function SideNav({ children }) {
   const [userData, setUserData] = useState([]);
   const user = auth.currentUser.uid;
 
-  const fetchDataOnce = async () =>{
+  const fetchDataOnce = async () => {
     const q = query(collection(db, "userData"), where("name", "==", `${user}`));
     const querySnapshot = await getDocs(q);
 
@@ -34,10 +29,11 @@ export default function SideNav({ children }) {
       // doc.data() is never undefined for query doc snapshots
       setUserData(doc.data());
     });
-  }
+  };
 
   useEffect(() => {
-    fetchDataOnce()
+    fetchDataOnce();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const profileImage = userData.ProfileImage;
@@ -70,10 +66,7 @@ export default function SideNav({ children }) {
           <ul className="flex-1 px-3">{children}</ul>
         </SidebarContext.Provider>
         <div className="border-t flex p-3">
-          <img
-            src={profileImage}
-            className="w-10 h-10 rounded-full"
-          />
+          <img src={profileImage} className="w-10 h-10 rounded-full" />
           <div
             className={`flex justify-between items-center overflow-hidden transition-all ${
               expanded ? "w-52 ml-3" : "w-0"
@@ -91,6 +84,7 @@ export default function SideNav({ children }) {
 }
 
 //setting the sidebar items styling; when page is active, it is highlighted, and when user hovers over other pages, it highlights them in a lighter colour.
+// eslint-disable-next-line react/prop-types
 export function SidebarItem({ icon, text, active, alert }) {
   const { expanded } = useContext(SidebarContext);
   return (

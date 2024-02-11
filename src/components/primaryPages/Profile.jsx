@@ -30,7 +30,7 @@ export default function Profile() {
     });
   };
 
-  
+
   const fetchDataOnce = async () =>{
     const q = query(collection(db, "userData"), where("name", "==", `${user}`));
     const querySnapshot = await getDocs(q);
