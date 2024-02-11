@@ -18,7 +18,7 @@ export default function Profile() {
   const user = auth.currentUser.uid;
   const navigate = useNavigate();
   const [txt, setTxt] = useState("");
-  const [img, setImg] = useState("");
+  const [img, setImg] = useState("./images/logo_icon_square.png");
   const [userData, setUserData] = useState([]);
 
   const handleupload = (e) => {
