@@ -12,7 +12,7 @@ const [nav, setNav] = useState(false)
 const handleClick = () => setNav(!nav)
 
     return (
-        <nav className="welcomenav nav relative z-indez:999 top-0 left-0 flex flex-row justify-between w-full m-0 bg-amber-50 text-green-800 p-1 items-center shadow-lg font-bold overflow-visible">
+        <nav className="nav z-50 top-0 left-0 flex flex-row justify-between w-full m-0 bg-amber-50 text-green-800 p-1 items-center shadow-lg font-bold overflow-visible">
             <a href="#" className="nav-logo">
                 <img src={logo} alt="PantryBuddy Logo" className="w-48"/>
             </a>
@@ -31,9 +31,9 @@ const handleClick = () => setNav(!nav)
             {/* Mobile Menu */}
             <ul className={`${
           nav
-            ? 'text-white opacity-100 transform translate-x-0'
+            ? 'text-green-800 opacity-100 transform translate-x-0'
             : 'opacity-0 transform -translate-y-full'
-        } transition-transform absolute top-0 left-0 w-full h-screen bg-zinc-800/80 flex flex-col justify-center items-center text-2xl`}
+        } transition-transform absolute top-0 left-0 w-full h-screen bg-amber-50 z-40 flex flex-col justify-center items-center text-2xl`}
         onClick={() => setNav(false)}
       >
         <Link to="/welcome"><li className="hover:text-amber-500">HOME</li></Link>
