@@ -1,9 +1,23 @@
+import { useState } from "react";
+
 import "../css/dashboard.css";
 import "../css/widget.css";
+
 import PantryList from "../widgets/PantryList";
 import PieCharts from "../widgets/PieChart";
+import GroceryListWidget from "../widgets/GroceryListWidget"
+import SpoonacularApi from "../widgets/SpoonacularApi"
+import RecipeCard from "../widgets/RecipeCard";
+import SearchBarRecipe from "../widgets/SearchBarRecipe"
 
 function Home() {
+
+  const [query, setQuery] = useState("");
+
+  const handleSearch = (newQuery) => {
+    setQuery(newQuery);
+  };
+
   return (
     <div id="widgetContainer" className="bg-amber-50 flex">
 
@@ -18,16 +32,18 @@ function Home() {
       </div>
 
       <div className="col-span-1 rounded shadow-lg justify-center bg-white">
-        Three
+        <GroceryListWidget />
       </div>
       
       <div className="col-span-1 lg:col-span-2 rounded shadow-lg justify-center bg-white">
-        Four
-      </div>
+          <SpoonacularApi query={query} />
+          <RecipeCard />
+        </div>
 
-      <div className="col-span-1 lg:col-span-1 rounded shadow-lg justify-center bg-white">
-        Four
-      </div>
+        <div className="col-span-1 rounded shadow-lg justify-center bg-white">
+          <SearchBarRecipe onSearch = {handleSearch} />
+          
+        </div>
     </div>
   </div>
   );
