@@ -9,6 +9,7 @@ import "../css/dashboard.css";
 import WelcomeNav from "../nav/WelcomeNav";
 import Jumbotron from "../widgets/Jumbotron";
 import Footer from "../nav/Footer";
+import HowItWorks from "../widgets/HowItWorks";
 
 
 
@@ -19,9 +20,11 @@ export default function Dashboard() {
     <WelcomeNav/>
     <Jumbotron/>
 
+{/* How it works */}
+    <HowItWorks/>
+
 {/* Reviews Strip */}
 
-{/* How it works */}
 
 {/* Log In/Sign-Up Section */}
     <div id="container">
