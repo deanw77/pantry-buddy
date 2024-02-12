@@ -1,23 +1,20 @@
-import { useState } from 'react';
-import SearchBarRecipe from './SearchBarRecipe';
-import SpoonacularApi from './SpoonacularApi';
-import RecipeCard from './RecipeCard';
+import { useState } from "react";
+import SearchBarRecipe from "./SearchBarRecipe";
+import SpoonacularApi from "./SpoonacularApi";
+import RecipeCard from "./RecipeCard";
 
+function SearchBarRecipeParent() {
+  const [query, setQuery] = useState("");
 
-function SearchBarRecipeParent () {
-    const [query, setQuery] = useState('');
+  const handleSearch = (newQuery) => {
+    setQuery(newQuery);
+  };
 
-    const handleSearch = (newQuery) => {
-        setQuery(newQuery);
-    };
-
-
-return (
+  return (
     <div>
-        <SearchBarRecipe onSearch = {handleSearch} />
-        <SpoonacularApi query = {query} />
-        <RecipeCard />
-
+      <SearchBarRecipe onSearch={handleSearch} />
+      <SpoonacularApi query={query} />
+      <RecipeCard />
     </div>
   );
 }
