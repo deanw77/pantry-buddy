@@ -1,13 +1,25 @@
+//import link feature from react router
 import { Link } from "react-router-dom";
 
+//import needed styling and assets
 import logo from "../../assets/images/logo_transparent.png";
 import "../css/dashboard.css";
 
+//import needed widgets to page
+import WelcomeNav from "../nav/WelcomeNav";
+
+
+
 export default function Dashboard() {
   return (
+    <>
+    <WelcomeNav/>
+
+
+
     <div id="container">
       <div id="overlay">
-        <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+        <div className="flex flex-1 flex-col justify-center px-6 py-12 lg:px-8" id="login">
           <div className="sm:mx-auto sm:w-full sm:max-w-sm">
             <img src={logo} />
             <h2 className="text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
@@ -43,5 +55,6 @@ export default function Dashboard() {
         </div>
       </div>
     </div>
+    </>
   );
 }
