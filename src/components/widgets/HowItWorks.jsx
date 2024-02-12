@@ -4,7 +4,7 @@ import { CheckCircle } from 'lucide-react';
 
 export default function HowItWorks() {
     return(
-        <div className="bg-amber-50 py-12 px-4 sm:px-6 lg:px-8">
+        <div className="bg-amber-50 py-12 px-4 sm:px-6 lg:px-8" id="about">
         <div className="max-w-7xl mx-auto">
           <h3 className="text-3xl font-extrabold text-green-700 sm:text-4xl mb-8 text-center">
             How it works

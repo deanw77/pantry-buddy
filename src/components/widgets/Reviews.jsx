@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Reviews() {
     return (
-        <div className="bg-amber-50 py-12 px-4 sm:px-6 lg:px-8">
+        <div className="bg-amber-50 py-12 px-4 sm:px-6 lg:px-8" id="reviews">
         <div className="max-w-7xl mx-auto">
           <h3 className="text-3xl font-extrabold text-green-700 text-center sm:text-4xl mb-8">
             What our users say...

@@ -19,6 +19,8 @@ const handleClick = () => setNav(!nav)
 
             <ul className="hidden md:flex gap-6">
                 <Link to="/welcome"><li>Home</li></Link>
+                <a href="#about"><li>About</li></a>
+                <a href="#reviews"><li>Reviews</li></a>
                 <a href="#login"><li>Log In/ Sign up</li></a>
                 
             </ul>
@@ -35,6 +37,8 @@ const handleClick = () => setNav(!nav)
         onClick={() => setNav(false)}
       >
         <Link to="/welcome"><li className="hover:text-amber-500">Home</li></Link>
+        <a href="#about"><li className="hover:text-amber-500">About</li></a>
+        <a href="#reviews"><li className="hover:text-amber-500">Reviews</li></a>
         <a href="#login"><li className="hover:text-amber-500">Log In/ Sign up</li></a>
 </ul>
         </nav>
