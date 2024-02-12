@@ -7,16 +7,23 @@ import "../css/dashboard.css";
 
 //import needed widgets to page
 import WelcomeNav from "../nav/WelcomeNav";
+import Jumbotron from "../widgets/Jumbotron";
+import Footer from "../nav/Footer";
 
 
 
 export default function Dashboard() {
   return (
     <>
+{/* Navigation and Header */}
     <WelcomeNav/>
+    <Jumbotron/>
 
+{/* Reviews Strip */}
 
+{/* How it works */}
 
+{/* Log In/Sign-Up Section */}
     <div id="container">
       <div id="overlay">
         <div className="flex flex-1 flex-col justify-center px-6 py-12 lg:px-8" id="login">
@@ -55,6 +62,9 @@ export default function Dashboard() {
         </div>
       </div>
     </div>
+
+{/* Footer */}
+<Footer/>
     </>
   );
 }

@@ -1,6 +1,5 @@
-import React, {useState} from "react";
-import { Menu, MenuIcon, XSquareIcon } from "lucide-react";
-import { XSquare } from "lucide-react";
+import { useState } from "react";
+import { Menu, XSquare} from "lucide-react";
 import { Link } from "react-router-dom";
 
 //import needed styling and assets
@@ -13,9 +12,9 @@ const [nav, setNav] = useState(false)
 const handleClick = () => setNav(!nav)
 
     return (
-        <nav className="nav shadow-md fixed top-0 left-0 flex flex-row justify-between w-full m-0 bg-amber-50 text-green-950 p-5 items-center">
+        <nav className="nav top-0 left-0 flex flex-row justify-between w-full m-0 bg-amber-50 text-green-800 p-1 items-center shadow-lg font-bold">
             <a href="#" className="nav-logo">
-                <img src={logo} alt="PantryBuddy Logo" className="w-40"/>
+                <img src={logo} alt="PantryBuddy Logo" className="w-48"/>
             </a>
 
             <ul className="hidden md:flex gap-6">
