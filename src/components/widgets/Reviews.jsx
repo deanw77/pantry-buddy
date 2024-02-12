@@ -8,7 +8,7 @@ export default function Reviews() {
             What our users say...
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white rounded-lg p-6 shadow-lg">
+            <div className="bg-white rounded-lg p-6 shadow-md transition duration-300 ease-in-out transform hover:shadow-lg">
               <div className="text-gray-700 text-lg mb-4">
                 "PantryBuddy has been a game-changer for our family. With two kids and a busy schedule, keeping track of pantry items was always a challenge. Thanks to PantryBuddy's intuitive interface and expiry date reminders, we've significantly cut down on food waste. Plus, the recipe suggestions based on what's expiring soon have been a lifesaver!"
               </div>
@@ -24,7 +24,7 @@ export default function Reviews() {
                 </div>
               </div>
             </div>
-            <div className="bg-white rounded-lg p-6 shadow-lg">
+            <div className="bg-white rounded-lg p-6 shadow-md transition duration-300 ease-in-out transform hover:shadow-lg">
               <div className="text-gray-700 text-lg mb-4">
                 "As someone passionate about reducing food waste and its environmental impact, I was thrilled to discover PantryBuddy. Not only does it make managing my pantry a breeze, but the carbon footprint feature for grocery items has been eye-opening. PantryBuddy isn't just a tool; it's a step towards a more sustainable future."
               </div>
@@ -40,7 +40,7 @@ export default function Reviews() {
                 </div>
               </div>
             </div>
-            <div className="bg-white rounded-lg p-6 shadow-lg">
+            <div className="bg-white rounded-lg p-6 shadow-md transition duration-300 ease-in-out transform hover:shadow-lg">
               <div className="text-gray-700 text-lg mb-4">
                 "PantryBuddy has revolutionized how I approach meal planning and grocery shopping. Knowing what's in my pantry and what's about to expire has not only helped me save money by reducing food waste, but it's also inspired me to get creative in the kitchen with the recipe suggestions. It's like having a personal chef and environmentalist in my pocket!"
               </div>
