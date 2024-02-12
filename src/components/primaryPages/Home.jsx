@@ -1,27 +1,35 @@
-import PantryEntryForm from "../widgets/PantryEntryForm";
-import GetRecipeCTA from "../widgets/GetRecipeCTA";
-
 import "../css/dashboard.css";
+import "../css/widget.css";
+import PantryList from "../widgets/PantryList";
+import PieCharts from "../widgets/PieChart";
 
 function Home() {
   return (
-    <div id="widgetContainer" className="flex bg-amber-50 flex-wrap items-stretch">
-      <div id="chart" className="rounded shadow-lg">
-        <h1>Your Pantry Status</h1>
-        <div id="tempChart">
-          <p>Some Pantry Infomation goes here</p>
-        </div>
+    <div id="widgetContainer" className="bg-amber-50 flex">
+
+    <div className=" grid grid-cols-1 lg:grid-cols-3 gap-4 w-full">
+
+      <div className="col-start-1 col-span-1 lg:col-span-1 rounded shadow-lg justify-center bg-white">
+        <PieCharts />
       </div>
 
-      <div id="chart2" className="rounded shadow-lg">
-        <PantryEntryForm />
+      <div className="col-span-1 lg:col-start-2 rounded shadow-lg justify-center bg-white">
+        <PantryList/>
       </div>
 
-      <div id="recipeBox">
-      <GetRecipeCTA />
+      <div className="col-span-1 rounded shadow-lg justify-center bg-white">
+        Three
       </div>
       
+      <div className="col-span-1 lg:col-span-2 rounded shadow-lg justify-center bg-white">
+        Four
+      </div>
+
+      <div className="col-span-1 lg:col-span-1 rounded shadow-lg justify-center bg-white">
+        Four
+      </div>
     </div>
+  </div>
   );
 }
 
