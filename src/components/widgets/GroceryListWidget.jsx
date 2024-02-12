@@ -86,20 +86,20 @@ function GroceryList() {
         ))}
       </ul>
 
-      <label htmlFor="FoodName" className="font-semibold">
+      <label htmlFor="FoodName" className="font-semibold mt-8">
         Food Name: 
 
         <input
           type="text"
           value={foodEntry}
           onChange={(e) => setFoodEntry(e.target.value)}
-          className="inline-block bg-gray-100 text-gray-700 border border-amber-600 rounded py-3 px-4 ml-5 leading-tight focus:bg-white focus:border-green-600 mb-3"
+          className="w-full  p-2 border-2 border-green-300 rounded-lg focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500"
         />
       </label>
 
       <button
         onClick={handleSubmit}
-        className="w-full justify-center rounded-md bg-green-600 p-2 my-3 text-sm font-semibold leading-6 text-black shadow-lg hover:bg-amber-500"
+        className="w-full justify-center rounded-md bg-green-600 p-2 mt-12 my-3 text-sm font-semibold leading-6 text-black shadow-lg hover:bg-amber-500"
       >
         Add Item To Shopping List
       </button>
