@@ -10,6 +10,7 @@ import WelcomeNav from "../nav/WelcomeNav";
 import Jumbotron from "../widgets/Jumbotron";
 import Footer from "../nav/Footer";
 import HowItWorks from "../widgets/HowItWorks";
+import Reviews from "../widgets/Reviews";
 
 
 
@@ -24,7 +25,7 @@ export default function Dashboard() {
     <HowItWorks/>
 
 {/* Reviews Strip */}
-
+    <Reviews/>
 
 {/* Log In/Sign-Up Section */}
     <div id="container">

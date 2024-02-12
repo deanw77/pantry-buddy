@@ -6,9 +6,9 @@ export default function HowItWorks() {
     return(
         <div className="bg-amber-50 py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-extrabold text-green-700 sm:text-4xl mb-8">
+          <h3 className="text-3xl font-extrabold text-green-700 sm:text-4xl mb-8 text-center">
             How it works
-          </h2>
+          </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
             <div>
               <ul className="list-disc list-inside">
