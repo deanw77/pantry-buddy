@@ -7,7 +7,6 @@ import PantryList from "../widgets/PantryList";
 import PieCharts from "../widgets/PieChart";
 import GroceryListWidget from "../widgets/GroceryListWidget"
 import SpoonacularApi from "../widgets/SpoonacularApi"
-import RecipeCard from "../widgets/RecipeCard";
 import SearchBarRecipe from "../widgets/SearchBarRecipe"
 
 function Home() {
@@ -37,7 +36,7 @@ function Home() {
       
       <div className="col-span-1 lg:col-span-2 rounded shadow-lg justify-center bg-white">
           <SpoonacularApi query={query} />
-          <RecipeCard />
+         
         </div>
 
         <div className="col-span-1 rounded shadow-lg justify-center bg-white">
