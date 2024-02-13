@@ -3,7 +3,7 @@
 export default function Jumbotron() {
     return(
         <div
-  className="overflow-hidden bg-cover bg-no-repeat p-12 text-center bg-[url('./src/assets/images/jumbotronImg.jpg')] min-h-lvh">
+  className="overflow-hidden bg-cover bg-no-repeat p-12 text-center bg-[url('./images/jumbotronImg.jpg')] min-h-lvh">
   <div
     className="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-fixed bg-[rgba(0, 0, 0, 0.6)]">
     <div className="z-50 flex h-full items-center justify-center w-auto">
