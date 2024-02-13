@@ -69,28 +69,28 @@ export default function MyPantry() {
     unixExpiryDatesArray.push(momentObj);
   }
 
+
   let itemToSearch = '';
 
-  let lowest = 2000000;
-  for (let i = 0; i < unixExpiryDatesArray.length; i++) {
-    if (unixExpiryDatesArray[i] < lowest) {
-      lowest = unixExpiryDatesArray[i]
-      if ( unixExpiryDatesArray[i] > 0) {
-      itemToSearch = expiryItemsArray[i]
+    let lowest = 200000000;
+    for (let i = 0; i < unixExpiryDatesArray.length; i++) {
+      if (unixExpiryDatesArray[i] < lowest) {
+        lowest = unixExpiryDatesArray[i];
+        if (unixExpiryDatesArray[i] > 0) {
+          itemToSearch = expiryItemsArray[i];
+        }
+      }
+      console.log(unixExpiryDatesArray);
+      console.log(itemToSearch);
     }
-    }
-  }
 
-  console.log(itemToSearch);
+useEffect(() => {
+  setRecipeQuery(itemToSearch);
+}, []);
+      
 
-  const handleSearch = (recipeQuery) => {
-    setRecipeQuery(recipeQuery);
-  };
 
-  useEffect(() => {
-    handleSearch(itemToSearch)
-  }, [])
-  
+
   return (
     <>
       <div id="widgetContainer" className="bg-amber-50 flex">
@@ -104,7 +104,7 @@ export default function MyPantry() {
           </div>
 
           <div className="col-span-1 lg:col-span-2 rounded shadow-lg justify-center bg-white">
-            <SpoonacularApi query={recipeQuery} />
+            <SpoonacularApi query={itemToSearch} />
             <RecipeCard />
           </div>
 

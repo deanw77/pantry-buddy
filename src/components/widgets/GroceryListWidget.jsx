@@ -192,7 +192,7 @@ function GroceryList() {
         Add Item To Shopping List
       </button>
 
-      {selectedItem && <FoodPrintApi query={selectedItem} />} 
+      {/* {selectedItem && <FoodPrintApi query={selectedItem} />}  */}
     </div>
   );
 }
