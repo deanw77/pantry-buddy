@@ -1,9 +1,9 @@
-
+import "../css/dashboard.css";
 
 export default function Jumbotron() {
     return(
         <div
-  className="relative overflow-hidden bg-cover bg-no-repeat p-12 text-center bg-[url('../../assets/images/jumbotronImg.jpg')] min-h-lvh" id="jumbotron">
+  className="relative overflow-hidden bg-cover bg-no-repeat p-12 text-center min-h-lvh" id="jumbotron">
   <div
     className="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-fixed bg-[rgba(0, 0, 0, 0.6)]">
     <div className="z-60 flex h-full items-center justify-center w-auto">
