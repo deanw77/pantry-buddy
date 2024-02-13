@@ -9,11 +9,11 @@ const RecipeCard = ({ recipeTitle, imageUrl, sourceUrl }) => {
     if (recipeTitle !== undefined) {
       setActive(true);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
-    <div className="border-solid border-4 border-green-100 rounded-md h-full">
+    <>
       {active === true && (
         <>
           <div>
@@ -38,7 +38,7 @@ const RecipeCard = ({ recipeTitle, imageUrl, sourceUrl }) => {
           </div>
         </>
       )}
-    </div>
+    </>
   );
 };
 

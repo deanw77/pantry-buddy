@@ -23,18 +23,10 @@ const FoodPrintApi = ({ query }) => {
         }
       };
 
-      // try {
-      //   const response = await axios.request(options);
-      //   console.log(response.data);
-      // } catch (error) {
-      //   console.error(error);
-      // }
-
       try {
         setError(null)
         setAverageFootprint(null)
         const response = await axios.request(options);
-        console.log(response.data)
         const data = response.data.slice(0, 10); // Get only the first 10 items
         const totalFootprint = data.reduce((sum, item) => sum + parseFloat(item.footprint || 0), 0);
         const avgFootprint = totalFootprint / data.length;
