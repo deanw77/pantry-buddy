@@ -14,6 +14,7 @@ import PantryList from "../widgets/PantryList";
 import PieCharts from "../widgets/PieChart";
 import SpoonacularApi from "../widgets/SpoonacularApi";
 import RecipeCard from "../widgets/RecipeCard";
+import CarbonFootprintWidget from "../widgets/CarbonFootprintWidget";
 
 export default function MyPantry() {
   const [userRecipePantryList, setUserRecipePantryList] = useState([]);
@@ -81,8 +82,6 @@ export default function MyPantry() {
           itemToSearch = expiryItemsArray[i];
         }
       }
-      console.log(unixExpiryDatesArray);
-      console.log(itemToSearch);
     }
 
 useEffect(() => {
@@ -105,13 +104,13 @@ useEffect(() => {
             <PieCharts />
           </div>
 
-          <div className="col-span-1 lg:col-span-2 rounded shadow-lg justify-center bg-white">
+          <div className="col-span-1 lg:col-span-1 rounded shadow-lg justify-center bg-white">
             <SpoonacularApi query={itemToSearch} />
             <RecipeCard />
           </div>
 
-          <div className="col-span-1 rounded shadow-lg justify-center bg-white">
-            Something Else
+          <div className="col-span-2 rounded shadow-lg justify-center bg-white">
+            <CarbonFootprintWidget />
           </div>
         </div>
       </div>

@@ -40,7 +40,6 @@ function Home() {
 
         <div className="col-span-1 lg:col-span-2 rounded shadow-lg justify-center bg-white">
           <SpoonacularApi query={query} />
-         
         </div>
       </div>
     </div>

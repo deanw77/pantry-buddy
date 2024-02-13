@@ -130,24 +130,24 @@ function PieCharts() {
         {/* <div>
           <table className="table-fixed">
             <thead>
-              <tr className="m-2">
+              <tr className="m-2 px-12">
                 <th>Key</th>
               </tr>
             </thead>
 
             <tbody>
               <tr className="m-2">
-                <td className="bg-red-600 p-3 text-center font-semibold">
+                <td className="bg-red-600 p-3 px-12 text-center font-semibold">
                   Expired
                 </td>
               </tr>
               <tr className="m-2">
-                <td className="bg-amber-600 p-3 text-center font-semibold">
+                <td className="bg-amber-600 p-3 px-12 text-center font-semibold">
                   Expires Soon
                 </td>
               </tr>
               <tr className="m-2">
-                <td className="bg-lime-600 p-3 text-center font-semibold">
+                <td className="bg-lime-600 p-3 px-12 text-center font-semibold">
                   Good
                 </td>
               </tr>
