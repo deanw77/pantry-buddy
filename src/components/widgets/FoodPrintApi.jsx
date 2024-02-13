@@ -71,7 +71,7 @@ const FoodPrintApi = ({ query }) => {
         method: 'GET',
         url: `https://foodprint.p.rapidapi.com/api/foodprint/name/${query}`,
         headers: {
-          'X-RapidAPI-Key': '402402c2b0mshd8c34bded637b94p10529fjsnc2592f51de16',
+          'X-RapidAPI-Key': 'd592bd071bmsh0f69b85e08df678p1ff500jsn2bf527f623c7',
           'X-RapidAPI-Host': 'foodprint.p.rapidapi.com'
         }
       };
