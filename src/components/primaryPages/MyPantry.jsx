@@ -17,6 +17,7 @@ import RecipeCard from "../widgets/RecipeCard";
 
 export default function MyPantry() {
   const [userRecipePantryList, setUserRecipePantryList] = useState([]);
+  // eslint-disable-next-line no-unused-vars
   const [recipeQuery, setRecipeQuery] = useState("");
 
   // Store Current Users UID
@@ -86,6 +87,7 @@ export default function MyPantry() {
 
 useEffect(() => {
   setRecipeQuery(itemToSearch);
+// eslint-disable-next-line react-hooks/exhaustive-deps
 }, []);
       
 

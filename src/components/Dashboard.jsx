@@ -1,8 +1,10 @@
 import { useState } from "react";
 
+// Import Sidebar and Footer to display with every component
 import SideNav, { SidebarItem } from "./nav/SideNav.jsx";
 import Footer from "./nav/Footer.jsx";
 
+// Import Components for the siz main pages
 import Home from "./primaryPages/Home.jsx";
 import Profile from "./primaryPages/Profile.jsx";
 import MyPantry from "./primaryPages/MyPantry.jsx";

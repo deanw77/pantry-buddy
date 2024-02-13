@@ -1,3 +1,4 @@
+// It begins and ends here, recieving the App component and rendering it to the screen
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
 import ReactDOM from "react-dom/client";

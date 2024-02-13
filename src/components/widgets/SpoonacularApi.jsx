@@ -1,55 +1,8 @@
-// import React, { useState, useEffect } from 'react';
-// import axios from "axios";
-// import RecipeCard from './widgets/RecipeCard';
-
-// const SpoonacularApi = ({ query }) => {
-//     const [recipes, setRecipes] = useState([]);
-
-//     const fetchRecipes = async () => {
-//       const apiKey = '831da13c3dcd407ea68406f0fd51a6c4';
-//       const url = 'https://api.spoonacular.com/recipes/complexSearch';
-
-//       try {
-//         const response = await axios.get(url, {
-//             params: {
-//                 apiKey: apiKey,
-//                 query: query, 
-//                 number: 10, 
-//                 instructionsRequired: true,
-//                 addRecipeInformation: true,
-//                 fillIngredients: true,
-//             },
-//         });
-//         setRecipes(response.data.results);
-//       } catch (error) {
-//         console.error('Error is', error);
-//       }
-//     };
-
-//     useEffect(() => {
-//       if (query) {
-//         fetchRecipes();
-//       }
-//     }, [query]); 
-
-//     return (
-//       <div>
-//         {recipes.map((recipe) => (
-//           <RecipeCard key={recipe.id} 
-//                       recipeTitle={recipe.title} 
-//                       ingredients={recipe.extendedIngredients} 
-//                       imageUrl={recipe.image}/>
-//         ))}
-//       </div>
-//     );
-// };
-
-// export default SpoonacularApi;
-
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import axios from "axios";
 import RecipeCard from './RecipeCard';
 
+// eslint-disable-next-line react/prop-types
 const SpoonacularApi = ({ query }) => {
     const [recipes, setRecipes] = useState([]);
 
@@ -95,6 +48,7 @@ const SpoonacularApi = ({ query }) => {
         if (query) {
             fetchRecipes();
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [query]);
 
     // responsive display - 4 containers will be displayed on large screen, 2 on medium screen and 1 on small

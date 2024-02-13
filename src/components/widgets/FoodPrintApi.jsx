@@ -54,9 +54,10 @@
 // export default FoodPrintApi;
 
 
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 
+// eslint-disable-next-line react/prop-types
 const FoodPrintApi = ({ query }) => {
   const [averageFootprint, setAverageFootprint] = useState(null);
   const [loading, setLoading] = useState(false);
