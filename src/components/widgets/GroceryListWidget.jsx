@@ -109,7 +109,7 @@
 
 // export default GroceryList;
 
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { auth, db } from "../../firebase/firebase";
 import { collection, query, where, getDocs, doc, setDoc, updateDoc, deleteField } from "firebase/firestore";
 import FoodPrintApi from "./FoodPrintApi";
@@ -127,6 +127,7 @@ function GroceryList() {
     querySnapshot.forEach((doc) => {
       setUserGroceryList(doc.data());
       setUserGroceryList((current) => {
+        // eslint-disable-next-line no-unused-vars
         const { name, ...rest } = current;
         return rest;
       });
@@ -135,6 +136,7 @@ function GroceryList() {
 
   useEffect(() => {
     fetchPantryListOnce();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleSubmit = async (e) => {

@@ -1,6 +1,4 @@
-import React, { useState } from "react";
 import axios from 'axios';
-import spoonacularData from '../../data/spoonacularRes.json'
 
 // https://api.spoonacular.com/recipes/findByIngredients
 
@@ -20,9 +18,6 @@ function ApiCall() {
     .catch((error) => {
       console.log(error);
     });
-
-  // console.log(spoonacularData);
-
 }
 
 export default ApiCall;

@@ -13,6 +13,7 @@ import {
 function PantryEntryForm() {
   const [foodEntry, setFoodEntry] = useState("");
   const [expiryDate, setExpiryDate] = useState("");
+  // eslint-disable-next-line no-unused-vars
   const [userPantryList, setUserPantryList] = useState([]);
   const [userData, setUserData] = useState([]);
   const user = userData.uid;
@@ -42,6 +43,7 @@ function PantryEntryForm() {
 
       setUserPantryList((current) => {
         // remove cost key from object
+        // eslint-disable-next-line no-unused-vars
         const { name, ...rest } = current;
         return rest;
       });
@@ -51,6 +53,7 @@ function PantryEntryForm() {
   useEffect(() => {
     fetchDataOnce();
     fetchData2Once();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleSubmit = async (e) => {

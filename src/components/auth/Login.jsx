@@ -12,6 +12,7 @@ export default function Login() {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
+  // Run the sign-in process provided by Firebase
   const login = (e) => {
     e.preventDefault();
 

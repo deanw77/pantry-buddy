@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
+// eslint-disable-next-line react/prop-types
 function SearchBarRecipe({ onSearch }) {
     const [recipeQuery, setRecipeQuery] = useState('');
 
@@ -33,5 +34,3 @@ function SearchBarRecipe({ onSearch }) {
 }
 
 export default SearchBarRecipe;
-
-

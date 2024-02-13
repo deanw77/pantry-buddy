@@ -5,6 +5,7 @@ import { getAuth } from "firebase/auth"
 import { getStorage } from "firebase/storage";
 import { getFirestore } from "firebase/firestore"
 
+// The custom keys required to acces the databases
 const firebaseConfig = {
   apiKey: "AIzaSyAQKTfIgPplNbv1bc4rVS8YDsXu3fHVeTo",
   authDomain: "pantry-buddy-f533c.firebaseapp.com",
