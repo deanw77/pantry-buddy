@@ -32,13 +32,13 @@ function Home() {
           <GroceryListWidget />
         </div>
 
+        <div className="col-span-1 rounded shadow-lg justify-center bg-white">
+          <SearchBarRecipe onSearch={handleSearch} />
+        </div>
+
         <div className="col-span-1 lg:col-span-2 rounded shadow-lg justify-center bg-white">
           <SpoonacularApi query={query} />
           <RecipeCard />
-        </div>
-
-        <div className="col-span-1 rounded shadow-lg justify-center bg-white">
-          <SearchBarRecipe onSearch={handleSearch} />
         </div>
       </div>
     </div>

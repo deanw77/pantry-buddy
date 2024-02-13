@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { CheckCircle } from 'lucide-react';
 
 export default function HowItWorks() {
@@ -24,7 +22,7 @@ export default function HowItWorks() {
                   <span className="text-lg text-gray-600">
                   Reduce Food Waste, Save Money, Save the Planet: By staying
                     organized, utilizing expiring items, and making sustainable
-                    choices, you'll not only save money but also contribute to a
+                    choices, you will not only save money but also contribute to a
                     healthier planet by reducing food waste and carbon emissions.
                   </span>
                 </li>
@@ -35,8 +33,8 @@ export default function HowItWorks() {
                 <li className="flex items-start mt-4">
                   <CheckCircle size={45} className="text-green-700 m-3" />
                   <span className="text-lg text-gray-600">
-                    Create Your Grocery List: Plan your grocery shopping with
-                    PantryBuddy's convenient list feature, and see the carbon
+                    Create Your Grocery List: Plan your grocery shopping with the convenient
+                    PantryBuddy list feature, and see the carbon
                     footprint of each item to make environmentally conscious
                     choices.
                   </span>
@@ -45,7 +43,7 @@ export default function HowItWorks() {
                   <CheckCircle size={35} className="text-green-700 m-3" />
                   <span className="text-lg text-gray-600">
                     Get Recipe Suggestions: PantryBuddy analyzes your pantry
-                    items and suggests recipes based on what's expiring soon,
+                    items and suggests recipes based on what is expiring soon,
                     making meal planning a breeze.
                   </span>
                 </li>
