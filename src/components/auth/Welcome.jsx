@@ -16,8 +16,12 @@ export default function Dashboard() {
   return (
     <>
       {/* Navigation and Header */}
+      <div>
       <WelcomeNav />
+      </div>
+      <div>
       <Jumbotron />
+      </div>
 
       {/* How it works */}
       <HowItWorks />
