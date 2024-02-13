@@ -112,11 +112,11 @@
 import React, { useState, useEffect } from "react";
 import { auth, db } from "../../firebase/firebase";
 import { collection, query, where, getDocs, doc, setDoc, updateDoc, deleteField } from "firebase/firestore";
-import FoodPrintApi from "./FoodprintApi";
+// import FoodPrintApi from "./FoodprintApi";
 function GroceryList() {
   const [foodEntry, setFoodEntry] = useState("");
   const [userGroceryList, setUserGroceryList] = useState([]);
-  const [selectedItem, setSelectedItem] = useState(""); // State for tracking the selected item for FoodPrintAPI
+  // const [selectedItem, setSelectedItem] = useState(""); // State for tracking the selected item for FoodPrintAPI
 
   const user = auth.currentUser.uid;
 
@@ -169,7 +169,7 @@ function GroceryList() {
                 <span id="PantryListDelete" className="pr-3 m-0 text-white">X</span>
               </div>
             </a>
-            <button onClick={() => setSelectedItem(key)}>Check Footprint</button> 
+            {/* <button onClick={() => setSelectedItem(key)}>Check Footprint</button>  */}
           </li>
         ))}
       </ul>
