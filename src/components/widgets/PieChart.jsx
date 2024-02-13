@@ -97,7 +97,37 @@ function PieCharts() {
           <Pie className="" data={dataSet} width={"100%"}  height={"100%"}
   options={{ maintainAspectRatio: false }}/>
         </div>
-        <div>
+        <div class="overflow-hidden shadow-lg rounded-lg">
+  <table class="table-fixed w-full">
+    <thead>
+      <tr class="bg-gray-100">
+        <th class="px-6 py-3 text-left text-s font-medium text-black-500 uppercase tracking-wider">
+          Key
+        </th>
+      </tr>
+    </thead>
+
+    <tbody class="bg-white divide-y divide-gray-200">
+      <tr class="hover:bg-gray-50">
+        <td class="px-6 py-4 whitespace-nowrap text-sm font-semibold text-gray-900 bg-red-600 rounded-md">
+          <div class="text-black text-center">Expired</div>
+        </td>
+      </tr>
+      <tr class="hover:bg-gray-50">
+        <td class="px-6 py-4 whitespace-nowrap text-sm font-semibold text-gray-900 bg-amber-600 rounded-md">
+          <div class="text-black text-center">Expires Soon</div>
+        </td>
+      </tr>
+      <tr class="hover:bg-gray-50">
+        <td class="px-6 py-4 whitespace-nowrap text-sm font-semibold text-gray-900 bg-lime-600 rounded-md">
+          <div class="text-black text-center">Good</div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+        {/* <div>
           <table className="table-fixed">
             <thead>
               <tr className="m-2 px-12">
@@ -123,7 +153,7 @@ function PieCharts() {
               </tr>
             </tbody>
           </table>
-        </div>
+        </div> */}
       </div>
     </div>
   );
