@@ -114,12 +114,12 @@ export default function PieCharts() {
         </td>
       </tr>
       <tr className="hover:bg-gray-50">
-        <td className="px-6 py-4 whitespace-nowrap text-sm font-semibold text-gray-900 bg-amber-500 rounded-md">
+        <td className="px-6 py-4 whitespace-nowrap text-sm font-semibold text-gray-900 bg-amber-600 rounded-md">
           <div className="text-black text-center">Expires Soon</div>
         </td>
       </tr>
       <tr className="hover:bg-gray-50">
-        <td className="px-6 py-4 whitespace-nowrap text-sm font-semibold text-gray-900 bg-green-600 rounded-md">
+        <td className="px-6 py-4 whitespace-nowrap text-sm font-semibold text-gray-900 bg-lime-600 rounded-md">
           <div className="text-black text-center">Good</div>
         </td>
       </tr>

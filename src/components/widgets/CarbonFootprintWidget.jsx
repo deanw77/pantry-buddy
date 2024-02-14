@@ -13,10 +13,14 @@ import { Bar } from "react-chartjs-2";
 Chart.register(BarElement, CategoryScale, LinearScale);
 
 function CarbonFootprintWidget() {
-  const [averageFootprint, setAverageFootprint] = useState(null);
-
   // States required to Store Form Entry and Database information
   const [userPantryList, setUserPantryList] = useState([]);
+  const [userItemList, setUserItemList] = useState([]);
+  const [userCarbonList, setUserCarbonList] = useState([]);
+
+  const itemArray = [];
+  const footArray = [];
+  const foodItems = [];
 
   // Store Current Users UID
   const user = auth.currentUser.uid;
@@ -41,14 +45,13 @@ function CarbonFootprintWidget() {
     });
   };
 
-  const foodItems = [];
-  const carbonFootPrint = [];
+  // Run the Database inside of useEffect so they don't run repeatedly
+  useEffect(() => {
+    fetchPantryListData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-  Object.keys(userPantryList).map((key) => foodItems.push(key));
-
-  const fetchData = async (query) => {
-    if (!query) return;
-
+  async function getCarbonBarChart(query) {
     const options = {
       method: "GET",
       url: `https://foodprint.p.rapidapi.com/api/foodprint/name/${query}`,
@@ -59,43 +62,41 @@ function CarbonFootprintWidget() {
     };
 
     try {
-      setAverageFootprint(null);
       const response = await axios.request(options);
-      const data = response.data.slice(0, 10); // Get only the first 10 items
+      const data = response.data.slice(0, 10);
       const totalFootprint = data.reduce(
         (sum, item) => sum + parseFloat(item.footprint || 0),
         0
       );
       const avgFootprint = totalFootprint / data.length;
-      setAverageFootprint(avgFootprint.toFixed(2)); // Set the average footprint, rounded to 2 decimal places
-      console.log(averageFootprint);
-    } catch (error) {
-      console.error("Error fetching data from FoodPrint API:", error);
-    }
-  };
 
+      footArray.push(avgFootprint);
+      itemArray.push(query);
+
+      setUserItemList([...itemArray]);
+      setUserCarbonList([...footArray]);
+      console.log(userCarbonList);
+      console.log(userItemList);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  Object.keys(userPantryList).map((key) => foodItems.push(key));
+
+  
   useEffect(() => {
     for (let i = 0; i < foodItems.length; i++) {
-      let query = foodItems[i];
-      fetchData(query);
+      getCarbonBarChart(foodItems[i]);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
- 
-
-  // Run the Database inside of useEffect so they don't run repeatedly
-  useEffect(() => {
-    fetchPantryListData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const data = {
-    labels: [...foodItems],
+    labels: userItemList,
     datasets: [
       {
-        label: "123",
-        data: [3, 6, 9, 30, 5, 2, 45, 23, 23, 8],
+        data: userCarbonList,
         backgroundColor: "DarkOrange",
         borderColor: "black",
         borderWidth: 1,
