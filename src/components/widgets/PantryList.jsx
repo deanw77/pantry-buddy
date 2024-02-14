@@ -75,20 +75,18 @@ function PantryList() {
           </div>
 
           <ul id="PantryList">
-            {Object.keys(userPantryList).map((key, index) => (
-              <li key={index} className="flex justify-between align-center m-1">
-                <span id="PantryListItem" className="p-1 pl-5">{key}</span>
-                <span id="PantryListExpiry">{userPantryList[key]}</span>
-                <a onClick={() => deletePantryItem(key)}>
-                  <div className="bg-red-700 flex align-center justify-center rounded-full">
-                    <span id="PantryListDelete" className="pr-3  m-0 text-white">
-                      X 
-                    </span>
-                  </div> 
-                </a>
-              </li>
-            ))}
-          </ul>
+  {Object.keys(userPantryList).map((key, index) => (
+        <li key={index} className="flex justify-between items-center m-1">
+          <span id="PantryListItem" className="p-1 pl-5">{key}</span>
+          <span id="PantryListExpiry" style={{ fontSize: '12px'}}>{userPantryList[key]}</span>
+          <a onClick={() => deletePantryItem(key)}>
+            <div className="bg-red-700 flex items-center justify-center rounded-full">
+              <span id="PantryListDelete" className="pr-3 m-0 text-white">X</span>
+            </div>
+          </a>
+        </li>
+  ))}
+        </ul>
 
           <label htmlFor="FoodName" className="font-semibold">
             Food Name: 
