@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import axios from "axios";
 import RecipeCard from './RecipeCard';
 
+// eslint-disable-next-line react/prop-types
 const SpoonacularApi = ({ query }) => {
     const [recipes, setRecipes] = useState([]);
 
     const fetchRecipes = async () => {
-        const apiKey = '831da13c3dcd407ea68406f0fd51a6c4';
+        const apiKey = '874ee2d83a849461aa92914b00094a26e';
         const url = 'https://api.spoonacular.com/recipes/complexSearch';
 
         try {
@@ -47,6 +48,7 @@ const SpoonacularApi = ({ query }) => {
         if (query) {
             fetchRecipes();
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [query]);
 
     // responsive display - 4 containers will be displayed on large screen, 2 on medium screen and 1 on small

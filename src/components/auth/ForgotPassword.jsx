@@ -3,6 +3,7 @@ import { auth } from "../../firebase/firebase";
 import { sendPasswordResetEmail } from "firebase/auth";
 import { Link, useNavigate } from "react-router-dom";
 
+// Run the password reset function  
 export default function ForgotPassword() {
   const [email, setEmail] = useState("");
   const navigate = useNavigate();

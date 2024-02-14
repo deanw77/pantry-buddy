@@ -1,12 +1,13 @@
 import { useState } from "react";
 
+// Import Sidebar and Footer to display with every component
 import SideNav, { SidebarItem } from "./nav/SideNav.jsx";
 import Footer from "./nav/Footer.jsx";
 
+// Import Components for the siz main pages
 import Home from "./primaryPages/Home.jsx";
 import Profile from "./primaryPages/Profile.jsx";
 import MyPantry from "./primaryPages/MyPantry.jsx";
-import CarbonFootprint from "./primaryPages/CarbonFootprint.jsx";
 import Recipes from "./primaryPages/Recipes.jsx";
 import GroceryList from "./primaryPages/GroceryList.jsx";
 
@@ -17,7 +18,6 @@ import {
   LayoutGrid,
   Sandwich,
   CircleUserRound,
-  Leaf,
 } from "lucide-react";
 
 
@@ -40,9 +40,6 @@ export default function UserData() {
           <a className="text-left" onClick={() => setActive("GroceryList")}>
             <SidebarItem icon={<ClipboardList size={20} />} text="Grocery List" />
           </a>
-          <a className="text-left" onClick={() => setActive("CarbonFootprint")}>
-            <SidebarItem icon={<Leaf size={20} />} text="Carbon Footprint" />
-          </a>
           <a className="text-left" onClick={() => setActive("Profile")}>
             <SidebarItem icon={<CircleUserRound size={20} />} text="Account Settings" />
           </a>
@@ -52,7 +49,6 @@ export default function UserData() {
           {active === "Home" && <Home title="Home" />}
           {active === "Profile" && <Profile title="Profile" />}
           {active === "MyPantry" && <MyPantry title="MyPantry" />}
-          {active === "CarbonFootprint" && <CarbonFootprint title="CarbonFootprint" />}
           {active === "Recipes" && <Recipes title="Recipes" />}
           {active === "GroceryList" && <GroceryList title="GroceryList" />}
           

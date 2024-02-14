@@ -13,7 +13,7 @@ export default function Reviews() {
               <div className="flex items-center mt-4">
                 <img
                   className="h-11 w-11 rounded-full mr-4"
-                  src="./src/assets/images/emmaThompson.jpg"
+                  src="./images/emmaThompson.jpg"
                   alt="Emma Thompson"
                 />
                 <div>
@@ -29,7 +29,7 @@ export default function Reviews() {
               <div className="flex items-center mt-4">
                 <img
                   className="h-11 w-11 rounded-full mr-4"
-                  src="./src/assets/images/markJohnson.jpg"
+                  src="./images/markJohnson.jpg"
                   alt="Mark Johnson"
                 />
                 <div>
@@ -45,7 +45,7 @@ export default function Reviews() {
               <div className="flex items-center mt-4">
                 <img
                   className="h-11 w-11 rounded-full mr-4"
-                  src="./src/assets/images/sarahGarcia.jpg"
+                  src="./images/sarahGarcia.jpg"
                   alt="Sarah Garcia"
                 />
                 <div>
