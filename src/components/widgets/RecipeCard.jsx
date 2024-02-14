@@ -40,12 +40,13 @@ const RecipeCard = ({ recipeTitle, imageUrl, sourceUrl }) => {
       
       {active === true && 
       <>
+      <div className="w-auto">
         <div>
           <img src={imageUrl} className="object-cover rounded-md" />
         </div>
 
         <div className="p-4 grid">
-          <h2 className="text-lg font-semibold text-green-600 ">{recipeTitle}</h2>
+          <h2 className="text-md font-semibold text-green-600 ">{recipeTitle}</h2>
         </div>
 
         <div className="p-6 pt-0">
@@ -57,6 +58,7 @@ const RecipeCard = ({ recipeTitle, imageUrl, sourceUrl }) => {
           >
             View Full Recipe
           </a>
+        </div>
         </div>
       </>
       

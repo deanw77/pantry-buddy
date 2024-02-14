@@ -17,22 +17,17 @@ export default function Recipes() {
 
     return (
         <div id="widgetContainer" className="bg-amber-50 flex"> 
-        <div className=" grid grid-cols-1 lg:grid-cols-3 gap-4 w-full">
+        <div className=" grid grid-cols-1 gap-4 w-full">
 
         <div className="col-span-1 rounded shadow-lg justify-center bg-white">
           <SearchBarRecipe onSearch = {handleSearch} />
         
-        <div className="col-span-1 lg:col-span-2 rounded shadow-lg justify-center bg-white">
+        <div className="col-span-1  rounded shadow-lg justify-center bg-white">
         <RecipeCard />
           <SpoonacularApi query={query} />
         </div>
           
         </div>
-
-        <div className='col-span-1 lg:col-span-2 rounded shadow-lg justify-center bg-white'>
-            <SpoonacularApi query={"beans"} />
-        </div>
-
         </div>
         </div>
     )
