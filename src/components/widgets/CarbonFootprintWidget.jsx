@@ -13,10 +13,10 @@ import { Bar } from "react-chartjs-2";
 Chart.register(BarElement, CategoryScale, LinearScale);
 
 function CarbonFootprintWidget() {
-  const [averageFootprint, setAverageFootprint] = useState(null);
-
   // States required to Store Form Entry and Database information
   const [userPantryList, setUserPantryList] = useState([]);
+  const [userItemList, setUserItemList] = useState([]);
+  const [userCarbonList, setUserCarbonList] = useState([]);
 
   // Store Current Users UID
   const user = auth.currentUser.uid;
@@ -41,61 +41,60 @@ function CarbonFootprintWidget() {
     });
   };
 
-  const foodItems = [];
-  const carbonFootPrint = [];
-
-  Object.keys(userPantryList).map((key) => foodItems.push(key));
-
-  const fetchData = async (query) => {
-    if (!query) return;
-
-    const options = {
-      method: "GET",
-      url: `https://foodprint.p.rapidapi.com/api/foodprint/name/${query}`,
-      headers: {
-        "X-RapidAPI-Key": "d592bd071bmsh0f69b85e08df678p1ff500jsn2bf527f623c7",
-        "X-RapidAPI-Host": "foodprint.p.rapidapi.com",
-      },
-    };
-
-    try {
-      setAverageFootprint(null);
-      const response = await axios.request(options);
-      const data = response.data.slice(0, 10); // Get only the first 10 items
-      const totalFootprint = data.reduce(
-        (sum, item) => sum + parseFloat(item.footprint || 0),
-        0
-      );
-      const avgFootprint = totalFootprint / data.length;
-      setAverageFootprint(avgFootprint.toFixed(2)); // Set the average footprint, rounded to 2 decimal places
-      console.log(averageFootprint);
-    } catch (error) {
-      console.error("Error fetching data from FoodPrint API:", error);
-    }
-  };
-
-  useEffect(() => {
-    for (let i = 0; i < foodItems.length; i++) {
-      let query = foodItems[i];
-      fetchData(query);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
- 
-
   // Run the Database inside of useEffect so they don't run repeatedly
   useEffect(() => {
     fetchPantryListData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  async function getCarbonBarChart(query) {
+    const options = {
+      method: 'GET',
+      url: `https://foodprint.p.rapidapi.com/api/foodprint/name/${query}`,
+      headers: {
+        'X-RapidAPI-Key': 'd592bd071bmsh0f69b85e08df678p1ff500jsn2bf527f623c7',
+        'X-RapidAPI-Host': 'foodprint.p.rapidapi.com'
+      }
+    };
+    
+    try {
+      const response = await axios.request(options);
+      const data = response.data.slice(0, 10);
+      const totalFootprint = data.reduce((sum, item) => sum + parseFloat(item.footprint || 0), 0);
+      const avgFootprint = totalFootprint / data.length;
+
+      
+      footArray.push(avgFootprint);
+      itemArray.push(query);
+      setUserCarbonList(footArray);
+      setUserItemList(itemArray);
+      console.log(userCarbonList);
+      console.log(userItemList);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+  const itemArray= [];
+  const footArray =[];
+  const foodItems =[];
+
+  Object.keys(userPantryList).map((key) => foodItems.push(key));
+
+  console.log(userCarbonList);
+
+  useEffect(() => {
+    // setUserCarbonList([])
+    for (let i = 0; i < foodItems.length; i++) {
+      getCarbonBarChart(foodItems[i])
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   const data = {
-    labels: [...foodItems],
+    labels: userItemList,
     datasets: [
       {
-        label: "123",
-        data: [3, 6, 9, 30, 5, 2, 45, 23, 23, 8],
+        data: userCarbonList,
         backgroundColor: "DarkOrange",
         borderColor: "black",
         borderWidth: 1,
