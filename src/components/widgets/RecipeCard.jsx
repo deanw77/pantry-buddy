@@ -35,7 +35,7 @@ const RecipeCard = ({ recipeTitle, imageUrl, sourceUrl }) => {
     //     </div>
     // </div>
 
-    <div className="border-solid border-4 border-green-100 rounded-md h-full">
+    <div>
 
       
       {active === true && 
