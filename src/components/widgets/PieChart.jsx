@@ -14,7 +14,7 @@ import { Pie } from "react-chartjs-2";
 // Register Chart Elements
 Chart.register(ArcElement);
 
-function PieCharts() {
+export default function PieCharts() {
   // Set User Pantry List Variable
   const [userPantryList, setUserPantryList] = useState([]);
 
@@ -82,7 +82,7 @@ function PieCharts() {
     datasets: [
       {
         data: [expired, shortDate, allGood],
-        backgroundColor: ["#DC2626", "#D97706", "#65A30D"],
+        backgroundColor: ["#DC2626", "#F59E0B", "#16A34A"],
         borderWidth: 1,
       },
     ],
@@ -158,5 +158,3 @@ function PieCharts() {
     </div>
   );
 }
-
-export default PieCharts;
