@@ -168,7 +168,7 @@ function GroceryList() {
       const data = response.data.slice(0, 10); // Get only the first 10 items
       const totalFootprint = data.reduce((sum, item) => sum + parseFloat(item.footprint || 0), 0);
       const avgFootprint = totalFootprint / data.length;
-      swal(`Average Carbon Footprint for ${item}`, `${avgFootprint.toFixed(2)} kg of CO2`, "info");
+      swal(`Average carbon footprint for ${item}`, `To get 1kg of ${item}, ${avgFootprint.toFixed(2)}kg of carbon dioxide will be produced`, "info");
     } catch (error) {
       console.error('Error fetching data from FoodPrint API:', error);
       swal("Error", "Failed to fetch carbon footprint data!", "error");
