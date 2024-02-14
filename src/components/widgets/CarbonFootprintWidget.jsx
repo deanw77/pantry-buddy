@@ -18,6 +18,10 @@ function CarbonFootprintWidget() {
   const [userItemList, setUserItemList] = useState([]);
   const [userCarbonList, setUserCarbonList] = useState([]);
 
+  const itemArray = [];
+  const footArray = [];
+  const foodItems = [];
+
   // Store Current Users UID
   const user = auth.currentUser.uid;
 
@@ -49,46 +53,44 @@ function CarbonFootprintWidget() {
 
   async function getCarbonBarChart(query) {
     const options = {
-      method: 'GET',
+      method: "GET",
       url: `https://foodprint.p.rapidapi.com/api/foodprint/name/${query}`,
       headers: {
-        'X-RapidAPI-Key': 'd592bd071bmsh0f69b85e08df678p1ff500jsn2bf527f623c7',
-        'X-RapidAPI-Host': 'foodprint.p.rapidapi.com'
-      }
+        "X-RapidAPI-Key": "d592bd071bmsh0f69b85e08df678p1ff500jsn2bf527f623c7",
+        "X-RapidAPI-Host": "foodprint.p.rapidapi.com",
+      },
     };
-    
+
     try {
       const response = await axios.request(options);
       const data = response.data.slice(0, 10);
-      const totalFootprint = data.reduce((sum, item) => sum + parseFloat(item.footprint || 0), 0);
+      const totalFootprint = data.reduce(
+        (sum, item) => sum + parseFloat(item.footprint || 0),
+        0
+      );
       const avgFootprint = totalFootprint / data.length;
 
-      
       footArray.push(avgFootprint);
       itemArray.push(query);
-      setUserCarbonList(footArray);
-      setUserItemList(itemArray);
+
+      setUserItemList([...itemArray]);
+      setUserCarbonList([...footArray]);
       console.log(userCarbonList);
       console.log(userItemList);
     } catch (error) {
       console.error(error);
     }
   }
-  const itemArray= [];
-  const footArray =[];
-  const foodItems =[];
 
   Object.keys(userPantryList).map((key) => foodItems.push(key));
 
-  console.log(userCarbonList);
-
+  
   useEffect(() => {
-    // setUserCarbonList([])
     for (let i = 0; i < foodItems.length; i++) {
-      getCarbonBarChart(foodItems[i])
+      getCarbonBarChart(foodItems[i]);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const data = {
     labels: userItemList,
