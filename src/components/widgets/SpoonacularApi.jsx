@@ -7,8 +7,8 @@ const SpoonacularApi = ({ query }) => {
     const [recipes, setRecipes] = useState([]);
 
     const fetchRecipes = async () => {
-        // const apiKey = '1a8b8f648107410b96f2c4380b2bcb74';
-        const apiKey = '056260ea1ea6431d9482489045ae8ce3';
+        // const apiKey = '056260ea1ea6431d9482489045ae8ce3';
+        const apiKey='1a8b8f648107410b96f2c4380b2bcb74';
         const url = 'https://api.spoonacular.com/recipes/complexSearch';
 
         try {

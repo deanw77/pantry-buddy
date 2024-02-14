@@ -97,20 +97,20 @@ useEffect(() => {
     <>
       <div id="widgetContainer" className="bg-amber-50 flex">
         <div className=" grid grid-cols-1 lg:grid-cols-3 gap-4 w-full">
-          <div className="col-start-1 col-span-1 lg:col-span-2 rounded shadow-lg justify-center bg-white">
+          <div className="md:col-start-1 lg:col-span-2 sm:col-span-3 rounded shadow-lg justify-center bg-white">
             <PantryList />
           </div>
 
-          <div className="col-span-1 rounded shadow-lg justify-center bg-white">
+          <div className="md:col-span-1 lg:col-span-1 sm:col-span-3 rounded shadow-lg justify-center bg-white">
             <PieCharts />
           </div>
 
-          <div className="col-span-1 lg:col-span-1 rounded shadow-lg justify-center bg-white">
+          <div className="md:col-span-1 lg:col-span-1 sm:col-span-3 rounded shadow-lg justify-center bg-white">
             <SpoonacularApi query={itemToSearch} />
             <RecipeCard />
           </div>
 
-          <div className="col-span-2 rounded shadow-lg justify-center bg-white">
+          <div className="md:col-span-2 lg:col-span-2 sm:col-span-3 rounded shadow-lg justify-center bg-white">
             <CarbonFootprintWidget />
           </div>
 
