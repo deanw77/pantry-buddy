@@ -1,7 +1,6 @@
 import "../css/widget.css";
 
 import GroceryListWidget from "../widgets/GroceryListWidget";
-import PantryList from "../widgets/PantryList";
 import GetRecipeCTA from "../widgets/GetRecipeCTA";
 
 export default function GroceryList() {
