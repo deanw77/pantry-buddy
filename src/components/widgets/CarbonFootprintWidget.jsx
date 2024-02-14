@@ -1,5 +1,5 @@
 // Import Functions from React
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 
 // Import Required Functions fom FireBase
@@ -17,14 +17,15 @@ function CarbonFootprintWidget() {
   const [userPantryList, setUserPantryList] = useState([]);
   const [userItemList, setUserItemList] = useState([]);
   const [userCarbonList, setUserCarbonList] = useState([]);
-  const [loading, setLoading] = useState(true);
+  // const [loading, setLoading] = useState(false);
+  // const [data, setData] = useState({});
 
   const itemArray = [];
   const footArray = [];
   const foodItems = [];
 
   // Store Current Users UID
-  const user = auth.currentUser.uid;
+  const user = auth.currentUser.uid; 
 
   // Fetch the users Pantry List from Database
   const fetchPantryListData = async () => {
@@ -43,16 +44,23 @@ function CarbonFootprintWidget() {
         const { name, ...rest } = current;
         return rest;
       });
-    });
-  };
-
+    }); 
+  }; 
+   
   // Run the Database inside of useEffect so they don't run repeatedly
   useEffect(() => {
     fetchPantryListData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  async function getCarbonBarChart(query) {
+  useEffect(() => {   
+    for (let i = 0; i < foodItems.length; i++) {  
+      getCarbonBarChart(foodItems[i]); 
+    }     
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [userPantryList]);   
+ 
+  async function getCarbonBarChart(query) { 
     const options = {
       method: "GET",
       url: `https://foodprint.p.rapidapi.com/api/foodprint/name/${query}`,
@@ -60,87 +68,54 @@ function CarbonFootprintWidget() {
         "X-RapidAPI-Key": "d592bd071bmsh0f69b85e08df678p1ff500jsn2bf527f623c7",
         "X-RapidAPI-Host": "foodprint.p.rapidapi.com",
       },
-    };
-
+    };   
+ 
     try {
       const response = await axios.request(options);
       const data = response.data.slice(0, 10);
-      const totalFootprint = data.reduce(
-        (sum, item) => sum + parseFloat(item.footprint || 0),
-        0
-      );
+      const totalFootprint = data.reduce((sum, item) => sum + parseFloat(item.footprint || 0), 0 );
       const avgFootprint = totalFootprint / data.length;
-
+      
       footArray.push(avgFootprint);
       itemArray.push(query);
 
       setUserItemList([...itemArray]);
-      setUserCarbonList([...footArray]);
-      console.log(userCarbonList);
-      console.log(userItemList);
-      
+      setUserCarbonList([...footArray]);  
+      // setLoading(true); 
     } catch (error) {
-      console.error(error);
-    }
-  }
-
-  Object.keys(userPantryList).map((key) => foodItems.push(key));
-
-  
-  useEffect(() => {
-    for (let i = 0; i < foodItems.length; i++) {
-      getCarbonBarChart(foodItems[i]);
-    }
-    setLoading(false);
-    
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  
+      console.error('unknown food item' + error);
+    } 
+  }         
+ 
+  Object.keys(userPantryList).map((key) => foodItems.push(key));   
+     
   const data = {
-    labels: userItemList,   
-    datasets: [
-      {
+    labels: userItemList,     
+    datasets: [ 
+      { 
         data: userCarbonList,
         backgroundColor: "DarkOrange",
         borderColor: "black",
         borderWidth: 1,
-      },
-    ],
-  }; 
-
-  const options = {};
+      },   
+    ],      
+  };  
   
-
- 
-
+  const options = {};
 
   return (
-    
+     
     <>
       <div className="bg-white p-6 flex flex-col justify-between">
+        
         <h1 className="text-1xl font-bold text-black text-center">
-          What is Your Carbon Footprint?
+          What is Your Carbon Footprint?  
         </h1>
- 
-        <div> 
+      
+        <div>  
           <Bar data={data} options={options}></Bar>
         </div>
-  
-        {/* <div className="flex flex-col justify-between items-center wrap">
-          <div className="m-4 mt-8 h-64 w-64">
-            <Bar
-              className=""
-              data={dataSet}
-              width={"100%"}
-              height={"100%"}
-              options={{ maintainAspectRatio: false }}
-            />
-          </div>
-          <div>
-
-          </div>
-        </div> */}
+     
       </div>
     </>
   );
