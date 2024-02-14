@@ -15,7 +15,7 @@ export default function GroceryList() {
         </div>
 
         <div className="col-span-1 lg:col-start-3 rounded shadow-lg justify-center bg-white">
-          <PantryList />
+          <img src="./images/groceryImage.jpg" alt="vegetables"/>
         </div>
 
         <div  className="md:col-span-3 sm:col-span-3 rounded shadow-lg justify-center bg-white">
