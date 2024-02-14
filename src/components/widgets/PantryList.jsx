@@ -10,7 +10,7 @@ function PantryList() {
   const [foodEntry, setFoodEntry] = useState("");
   const [expiryDate, setExpiryDate] = useState("");
   const [userPantryList, setUserPantryList] = useState([]);
-  // const [userData, setUserData] = useState([]);
+ 
 
   // Store Current Users UID
   const user = auth.currentUser.uid;
