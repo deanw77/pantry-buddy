@@ -2,6 +2,7 @@ import "../css/widget.css";
 
 import GroceryListWidget from "../widgets/GroceryListWidget";
 import PantryList from "../widgets/PantryList";
+import GetRecipeCTA from "../widgets/GetRecipeCTA";
 
 export default function GroceryList() {
   return (
@@ -16,6 +17,10 @@ export default function GroceryList() {
         <div className="col-span-1 lg:col-start-3 rounded shadow-lg justify-center bg-white">
           <PantryList />
         </div>
+
+        <div  className="md:col-span-3 sm:col-span-3 rounded shadow-lg justify-center bg-white">
+          <GetRecipeCTA/>
+       </div>
       </div>
     </div>
   );

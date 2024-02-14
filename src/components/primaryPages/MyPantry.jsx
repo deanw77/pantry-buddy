@@ -15,6 +15,7 @@ import PieCharts from "../widgets/PieChart";
 import SpoonacularApi from "../widgets/SpoonacularApi";
 import RecipeCard from "../widgets/RecipeCard";
 import CarbonFootprintWidget from "../widgets/CarbonFootprintWidget";
+import GetRecipeCTA from "../widgets/GetRecipeCTA";
 
 export default function MyPantry() {
   const [userRecipePantryList, setUserRecipePantryList] = useState([]);
@@ -112,6 +113,10 @@ useEffect(() => {
           <div className="col-span-2 rounded shadow-lg justify-center bg-white">
             <CarbonFootprintWidget />
           </div>
+
+          <div  className="md:col-span-3 sm:col-span-3 rounded shadow-lg justify-center bg-white">
+          <GetRecipeCTA/>
+       </div>
         </div>
       </div>
     </>
