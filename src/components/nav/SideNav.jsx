@@ -15,7 +15,7 @@ const SidebarContext = createContext();
 //set default state of the sidebar as expanded
 // eslint-disable-next-line react/prop-types
 export default function SideNav({ children }) {
-  const [expanded, setExpanded] = useState(true);
+  const [expanded, setExpanded] = useState(false);
 
   // Get user Details for bottom of Nav
   const [userData, setUserData] = useState([]);
