@@ -1,5 +1,5 @@
 // Import Functions from React
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 
 // Import Required Functions fom FireBase
@@ -17,6 +17,7 @@ function CarbonFootprintWidget() {
   const [userPantryList, setUserPantryList] = useState([]);
   const [userItemList, setUserItemList] = useState([]);
   const [userCarbonList, setUserCarbonList] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const itemArray = [];
   const footArray = [];
@@ -77,6 +78,7 @@ function CarbonFootprintWidget() {
       setUserCarbonList([...footArray]);
       console.log(userCarbonList);
       console.log(userItemList);
+      
     } catch (error) {
       console.error(error);
     }
@@ -89,11 +91,14 @@ function CarbonFootprintWidget() {
     for (let i = 0; i < foodItems.length; i++) {
       getCarbonBarChart(foodItems[i]);
     }
+    setLoading(false);
+    
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  
   const data = {
-    labels: userItemList,
+    labels: userItemList,   
     datasets: [
       {
         data: userCarbonList,
@@ -102,19 +107,26 @@ function CarbonFootprintWidget() {
         borderWidth: 1,
       },
     ],
-  };
+  }; 
 
   const options = {};
+  
+
+ 
+
+
   return (
+    
     <>
       <div className="bg-white p-6 flex flex-col justify-between">
         <h1 className="text-1xl font-bold text-black text-center">
           What is Your Carbon Footprint?
         </h1>
-
-        <div>
+ 
+        <div> 
           <Bar data={data} options={options}></Bar>
         </div>
+  
         {/* <div className="flex flex-col justify-between items-center wrap">
           <div className="m-4 mt-8 h-64 w-64">
             <Bar
