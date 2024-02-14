@@ -93,7 +93,7 @@ export default function PieCharts() {
       <h1 className="text-3xl font-bold text-green-600">Pantry Status</h1>
 
       <div className="flex flex-col justify-between items-center wrap">
-        <div className="m-4 mt-8 h-64 w-64">
+        <div className="m-4 mt-8 h-60 w-60">
           <Pie className="" data={dataSet} width={"100%"}  height={"100%"}
   options={{ maintainAspectRatio: false }}/>
         </div>
