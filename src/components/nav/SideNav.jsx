@@ -93,7 +93,7 @@ export function SidebarItem({ icon, text, active, alert }) {
         relative flex items-center py-3 px-3 my-1 font-medium rounded-md cursor-pointer transition-colors ${
           active
             ? "bg-gradient-to-tr from-green-200 to-green-100 text-green-900"
-            : "hover:bg-orange-50 text-green-8=900"
+            : "hover:bg-amber-200 text-green-8=900"
         }`}
     >
       {icon}
