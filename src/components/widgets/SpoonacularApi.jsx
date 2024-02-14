@@ -7,12 +7,8 @@ const SpoonacularApi = ({ query }) => {
     const [recipes, setRecipes] = useState([]);
 
     const fetchRecipes = async () => {
-        // const apiKey = '874ee2d83a849461aa92914b00094a26e';
-<<<<<<< HEAD
-        const apiKey = 'd592bd071bmsh0f69b85e08df678p1ff500jsn2bf527f623c7';
-=======
+        // const apiKey = '1a8b8f648107410b96f2c4380b2bcb74';
         const apiKey = '056260ea1ea6431d9482489045ae8ce3';
->>>>>>> 940e9271708b91d00cb602c54c728412c380da66
         const url = 'https://api.spoonacular.com/recipes/complexSearch';
 
         try {
@@ -20,7 +16,7 @@ const SpoonacularApi = ({ query }) => {
                 params: {
                     apiKey: apiKey,
                     query: query,
-                    number: 4,
+                    number: 2,
                     instructionsRequired: true,
                     addRecipeInformation: true,
                     fillIngredients: true,
@@ -59,7 +55,7 @@ const SpoonacularApi = ({ query }) => {
     // responsive display - 4 containers will be displayed on large screen, 2 on medium screen and 1 on small
 
     return (
-        <div className=' mx-auto py-8 gap-6 pt-4 grid grid-cols-2 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 bg-neutral-50'>
+        <div className=' mx-auto py-8 gap-6 pt-4 grid sm:grid-cols-1 md:grid-cols-2 bg-neutral-50 w-full'>
             {recipes.map((recipe) => (
                 <div key={recipe.id}
                     //tailwind animation on img with hover and duration of animation
