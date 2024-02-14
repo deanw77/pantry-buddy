@@ -14,7 +14,7 @@ import { Pie } from "react-chartjs-2";
 // Register Chart Elements
 Chart.register(ArcElement);
 
-function PieCharts() {
+export default function PieCharts() {
   // Set User Pantry List Variable
   const [userPantryList, setUserPantryList] = useState([]);
 
@@ -82,7 +82,7 @@ function PieCharts() {
     datasets: [
       {
         data: [expired, shortDate, allGood],
-        backgroundColor: ["#DC2626", "#D97706", "#65A30D"],
+        backgroundColor: ["#DC2626", "#F59E0B", "#16A34A"],
         borderWidth: 1,
       },
     ],
@@ -114,12 +114,12 @@ function PieCharts() {
         </td>
       </tr>
       <tr className="hover:bg-gray-50">
-        <td className="px-6 py-4 whitespace-nowrap text-sm font-semibold text-gray-900 bg-amber-600 rounded-md">
+        <td className="px-6 py-4 whitespace-nowrap text-sm font-semibold text-gray-900 bg-amber-500 rounded-md">
           <div className="text-black text-center">Expires Soon</div>
         </td>
       </tr>
       <tr className="hover:bg-gray-50">
-        <td className="px-6 py-4 whitespace-nowrap text-sm font-semibold text-gray-900 bg-lime-600 rounded-md">
+        <td className="px-6 py-4 whitespace-nowrap text-sm font-semibold text-gray-900 bg-green-600 rounded-md">
           <div className="text-black text-center">Good</div>
         </td>
       </tr>
@@ -158,5 +158,3 @@ function PieCharts() {
     </div>
   );
 }
-
-export default PieCharts;
